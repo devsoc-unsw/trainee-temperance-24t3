@@ -1,0 +1,17 @@
+.personal-information {
+    /* width: 800%; */
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    min-width: 450px;
+}
+
+.personal-information-row{
+    display: flex;
+    flex-direction: row;
+    margin: 5% 2%;
+    min-width: 450px;
+    align-items: center;
+    justify-content: space-between;
+    /* column-gap: 30%; */
+}
