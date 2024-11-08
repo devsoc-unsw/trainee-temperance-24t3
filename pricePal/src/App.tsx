@@ -2,6 +2,8 @@
 import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Profile from "./pages/Profile/Profile";
+
 
 function App() {
 
@@ -9,6 +11,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   )
