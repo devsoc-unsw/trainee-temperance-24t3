@@ -1,7 +1,6 @@
-import React from "react";
 import './InfoBlock.css';
 
-interface InfoBlockProps {
+export interface InfoBlockProps {
     title: string;
     content: string;
     picture: string;
