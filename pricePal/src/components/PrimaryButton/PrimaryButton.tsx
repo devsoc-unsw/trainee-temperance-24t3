@@ -3,7 +3,7 @@ import './PrimaryButton.css'
 
 interface PrimaryButtonProps {
   label: string;
-  handler: void;
+  handler: (void);
 }
 
 const PrimaryButton = ({label, handler}: PrimaryButtonProps) => {
