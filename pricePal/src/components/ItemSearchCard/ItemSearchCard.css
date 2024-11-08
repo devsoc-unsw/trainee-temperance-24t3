@@ -1,0 +1,60 @@
+/* Card container */
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  width: clamp(200px, 50%, 220px);
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Item name and heart side by side */
+.item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: white;
+  padding-bottom: 2px;
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  flex-grow: 1; /* Ensures item name takes up remaining space */
+}
+
+/* Heart button styling */
+.heart {
+  padding: 0;
+}
+
+/* Image styling */
+.item-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Price and AddItemButton row */
+.item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  padding-top: 5px;
+}
+
+.price {
+  font-size: 20px;
+  margin: 0;
+}

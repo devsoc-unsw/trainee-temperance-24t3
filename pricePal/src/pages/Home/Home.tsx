@@ -1,6 +1,9 @@
 import React from "react";
 import './Home.css';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+import Heart from '../../components/Heart/Heart';
+import AddItemButton from '../../components/AddItemButton/AddItemButton';
+import ItemSearchCard from '../../components/ItemSearchCard/ItemSearchCard';
 
 const Home = () => {
   const goToProfilePage = () => {
