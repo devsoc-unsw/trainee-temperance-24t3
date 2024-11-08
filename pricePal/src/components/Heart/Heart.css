@@ -1,0 +1,11 @@
+.heart {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.heart-image {
+  width: 24px; 
+}
