@@ -1,66 +1,68 @@
 /* Card container */
-.search-item-card {
+.favorite-item-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 15px;
-  width: clamp(200px, 50%, 220px);
+  width: clamp(300px, 50%, 320px);
+  padding-top: 5px;
+  height: 125px;
+
   background-color: white;
   font-family: Arial, Helvetica, sans-serif;
-
-  height: 300px;
 }
 
 /* Item name and heart side by side */
-.search-item-header {
+.favorite-item-header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 10px;
   background-color: white;
   padding-bottom: 2px;
 }
 
-.search-item-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0;
-  flex-grow: 1; /* Ensures item name takes up remaining space */
-}
-
-/* Heart button styling */
-.heart {
-  padding: 0;
+.favorite-item-name {
+  font-size: 17px;
+  max-height: 50px;
 }
 
 /* Image styling */
-.search-item-image {
-  width: auto;
-  height: 220px;
+.favorite-item-image {
+  width: 80px;
+  height: 90px;
   margin-bottom: 10px;
   object-fit: cover;
   border-radius: 8px;
 }
 
 /* Price and AddItemButton row */
-.search-item-footer {
+.favorite-item-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   background-color: white;
-  padding-top: 5px;
 }
 
-.search-item-price {
-  font-size: 20px;
+.favorite-item-price {
+  font-size: clamp(1.15rem, 3vw, 1.3rem);
   margin: 0;
 }
 
-.add-minus-search-item {
-  width: 48px;
+.favorite-item-information {
+  width: 65%;
 }
+
+#addItemToCart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+  height: 20px;
+  margin-top: 10px;
+  padding-bottom: 15px;
+} 

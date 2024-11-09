@@ -1,5 +1,5 @@
 import React, { MouseEventHandler } from "react";
-import './ItemSearchCard.css'
+import './ItemSearchCard.css';
 import Heart from '../Heart/Heart.tsx';
 import AddItemButton from '../AddItemButton/AddItemButton';
 
@@ -16,20 +16,28 @@ interface ItemSearchCardProps {
 const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign, onHeartClick, onAddItemClick }: ItemSearchCardProps) => {
 
   return(
-    <div className="item-card">
+    <div className="search-item-card">
       {/* Header: itemName and heart */}
-      <div className="item-header">
-        <h1 className="item-name">{itemName}</h1>
+      <div className="search-item-header">
+        <h1 className="search-item-name">{itemName}</h1>
         <Heart handler={onHeartClick}/>
       </div>
 
       {/* Item image */}
-      <img className="item-image" src={itemImage} alt={itemName}/>
+      <img className="search-item-image" src={itemImage} alt={itemName}/>
 
       {/* Footer: price and add button */}
-      <div className="item-footer">
-        <h1 className="price">{"$ " + price}</h1>
-        <AddItemButton plusOrMinusSign={plusOrMinusSign} storeName={storeName} handler={onAddItemClick}/>
+      <div className="search-item-footer">
+        <h1 className="search-item-price">{"$ " + price}</h1>
+        <div className="add-minus-search-item">
+          <AddItemButton 
+            plusOrMinusSign={plusOrMinusSign} 
+            storeName={storeName} 
+            width={48}
+            height={27}
+            handler={onAddItemClick}
+          />
+        </div>
       </div>
     </div>
   )

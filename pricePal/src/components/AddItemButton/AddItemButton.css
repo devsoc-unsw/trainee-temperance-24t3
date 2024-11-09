@@ -1,9 +1,10 @@
 .add-item-button {
-  padding: 3px 20px;
+  padding: 3px;
   border: none;
   border-radius: 50px;
   color: white;
   font-size: 20px;
+  align-items: center;
 }
 
 /* Green button for Woolies */
