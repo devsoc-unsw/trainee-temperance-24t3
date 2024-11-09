@@ -1,9 +1,12 @@
 import React, { MouseEventHandler } from "react";
 import './AddItemButton.css'
+import { Simulate } from "react-dom/test-utils";
 
 interface AddItemButtonProps {
   storeName: string;
   plusOrMinusSign: string;
+  width: number;
+  height: number;
   handler: MouseEventHandler;
 }
 
@@ -17,13 +20,17 @@ const getButtonClass = (storeName: string) => {
   }
 };
 
-const AddItemButton = ({storeName, plusOrMinusSign, handler}: AddItemButtonProps) => {
+const AddItemButton = ({storeName, plusOrMinusSign, width, height, handler}: AddItemButtonProps) => {
 
   const buttonClass = getButtonClass(storeName);
 
   return(
     <>
-      <button className={`add-item-button ${buttonClass}`} onClick={handler}>
+      <button 
+        className={`add-item-button ${buttonClass}`} 
+        onClick={handler}
+        style={{ width: `${width}px`, height: `${height}px`, fontSize:`${height-7}px`}}
+      >
         {plusOrMinusSign}
       </button>  
     </>

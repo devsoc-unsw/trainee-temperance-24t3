@@ -1,9 +1,13 @@
 import React from "react";
 import './Home.css';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
-import Heart from '../../components/Heart/Heart';
-import AddItemButton from '../../components/AddItemButton/AddItemButton';
-import ItemSearchCard from '../../components/ItemSearchCard/ItemSearchCard';
+/////////// Comments to test card components ///////////
+////////////////////////////////////////////////////////
+// import Heart from '../../components/Heart/Heart';
+// import AddItemButton from '../../components/AddItemButton/AddItemButton';
+// import ItemSearchCard from '../../components/ItemSearchCard/ItemSearchCard';
+// import ShoppingCartCard from '../../components/ShoppingCartCard/ShoppingCartCard';
+// import FavoriteItemCard from '../../components/FavoriteItemCard/FavoriteItemCard';
 
 const Home = () => {
   const goToProfilePage = () => {
@@ -16,6 +20,14 @@ const Home = () => {
         <h1 className="">Bringing you low prices all day everyday</h1>
         <p>Let us do the work and help you find the best deals on you everyday grocery items</p>
         <PrimaryButton label={'SHOP NOW'} handler={goToProfilePage}/>
+        {/////////// Comments to test card components ///////////
+        /* <Heart/>
+        <AddItemButton plusOrMinusSign="+" storeName="woolies" width="40" height="30"/>
+        <ItemSearchCard storeName="woolies" plusOrMinusSign="+" itemImage="https://gfproductsaustralia.com.au/wp-content/uploads/2022/04/Helgas-Gluten-Free-White-Bread-Slices-300x300.jpeg" price={4.1273} itemName="Coles White Bread"/>
+        <ShoppingCartCard itemImage="https://gfproductsaustralia.com.au/wp-content/uploads/2022/04/Helgas-Gluten-Free-White-Bread-Slices-300x300.jpeg" price={4.123} itemName="Coles White Bread"/>
+        <ShoppingCartCard itemImage="https://gfproductsaustralia.com.au/wp-content/uploads/2022/04/Helgas-Gluten-Free-White-Bread-Slices-300x300.jpeg" price={4.26} itemName="fjdsakfdjs sajnd skajdhska"/>
+        <FavoriteItemCard itemImage="https://gfproductsaustralia.com.au/wp-content/uploads/2022/04/Helgas-Gluten-Free-White-Bread-Slices-300x300.jpeg" price={4.826} itemName="fjdsakfdjs sajnd skajdhska"/> 
+        ////////////////////////////////////////////////////////*/}
       </div>
     </>
   )

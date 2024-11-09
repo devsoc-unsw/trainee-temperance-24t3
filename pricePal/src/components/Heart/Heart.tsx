@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './Heart.css'
+import './Heart.css';
 
 interface HeartProps {
   handler: MouseEventHandler;
