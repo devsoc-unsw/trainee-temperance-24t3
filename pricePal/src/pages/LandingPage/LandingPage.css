@@ -68,7 +68,7 @@
 }
 
 .landing-page-footer {
-  padding-top: 15px;
+  padding-top: 35px;
   background-color: white;
   z-index: 15;
   height: 250px;
@@ -78,7 +78,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
-  row-gap: 20px;
+  row-gap: 40px;
   column-gap: 10px;
   align-items: center;
 }
