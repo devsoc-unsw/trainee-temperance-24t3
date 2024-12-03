@@ -1,0 +1,15 @@
+.account-settings {
+    display: flex;
+    flex-direction: column;
+    /* padding: 0 10%; */
+    padding-left: 10%;
+    /* row-gap: 10px; */
+}
+
+#profile-circle {
+    border-radius: 50%;
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 20px;
+    background-color: #d9d9d9;
+}

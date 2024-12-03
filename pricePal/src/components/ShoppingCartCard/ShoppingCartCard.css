@@ -1,0 +1,72 @@
+/* Card container */
+.shopping-item-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: clamp(300px, 50%, 320px);
+  padding-top: 5px;
+  height: 125px;
+
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Item name and heart side by side */
+.shopping-item-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  padding-bottom: 2px;
+}
+
+.shopping-item-name {
+  font-size: 17px;
+  max-height: 50px;
+}
+
+/* Image styling */
+.shopping-item-image {
+  width: 80px;
+  height: 90px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Price and AddItemButton row */
+.shopping-item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+}
+
+.shopping-item-price {
+  font-size: clamp(1.15rem, 3vw, 1.3rem);
+  margin: 0;
+}
+
+.shopping-item-information {
+  width: 65%;
+}
+
+.amount {
+  font-size: 24px;
+}
+
+#addRemoveItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+  height: 20px;
+  margin-top: 10px;
+  padding-bottom: 15px;
+} 
