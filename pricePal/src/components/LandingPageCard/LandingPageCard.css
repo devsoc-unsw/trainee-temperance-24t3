@@ -1,0 +1,28 @@
+/* Card container */
+.landing-page-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: clamp(160px, 15%, 350px);
+  padding-left: clamp(12px, 2vw, 25px);
+  padding-right: clamp(10px, 2vw, 25px);
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background-color: #EEEEEE;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.landing-page-name {
+  font-size: clamp(18px, 3vw, 20px);
+  max-height: 50px;
+}
+
+/* Image styling */
+.landing-page-image {
+  position: relative;
+  width: auto;
+  height: clamp(60px, 5vw, 100px);
+}
