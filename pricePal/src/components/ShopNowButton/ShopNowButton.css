@@ -1,0 +1,15 @@
+.shop-now-button {
+  background-color: #5D8D7E;
+  padding: clamp(10px, 1vw, 15px);
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  width: clamp(34%, 6vw, 40%);
+
+  font-size: clamp(11px, 2vw, 13px);
+}
+
+.shop-now-button:hover {
+  background-color: #568375;
+}
