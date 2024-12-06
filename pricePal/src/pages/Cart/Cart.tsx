@@ -4,7 +4,7 @@ import './Cart.css'
 const Cart = () => {
     return(
         <div className='profile-flex'>
-            <div> Profile Page</div>
+            <div> Shopping Cart </div>
             <div className="shopping-cart-box">
                 <div className="account-header">
                     <text className="account-title">Shopping Cart</text>

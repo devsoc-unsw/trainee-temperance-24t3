@@ -1,4 +1,4 @@
-.item-search-body {
+.favorite-item-body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -6,7 +6,7 @@
   /* max-height: 515px; */
 }
 
-.item-search-header {
+.favorite-header {
   /* background-color: black; */
   height: 3%;
   padding: 10px 40px;
@@ -26,7 +26,7 @@
   /* margin: 0 5%; */
 }
 
-.item-search-box {
+.favorite-item-box {
   background-color: #eeeeee;
   width: 90vw;
   /* height: 80vh; */
@@ -39,11 +39,11 @@
 }
 
 @media (max-width: 750px) {
-  .item-search-box {
+  .favorite-item-box {
       height: 1100px;
       flex-direction: column;
   }
-  .item-search-body {
+  .favorite-item-body {
       display: flex;
       flex-direction: column;
       align-items: center;

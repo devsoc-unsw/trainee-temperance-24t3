@@ -6,7 +6,7 @@ const ShopNowButton = () => {
 
   return(
     <>
-      <Link to="/SearchPage">
+      <Link to="/search">
         <button className="shop-now-button">SHOP NOW</button>  
       </Link>
     </>
