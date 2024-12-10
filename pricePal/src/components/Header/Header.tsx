@@ -15,32 +15,32 @@ const Header = () => {
       <button 
           className="logo"
           onClick={() => navigateTo('/home')}>
-        <div className="logo">LOGO HERE</div>
+          <div className="logo">LOGO HERE</div>
       </button>
-        <div className="search-bar-container">
-          <div className="search-bar-wrapper">
-            <SearchIcon className="search-icon" />
-            <input type="text" className="search-bar" placeholder="Search for grocery items"/>
-          </div>
+      <div className="search-bar-container">
+        <div className="search-bar-wrapper">
+          <SearchIcon className="search-icon" />
+          <input type="text" className="search-bar" placeholder="Search for grocery items"/>
         </div>
-        <div className="icon-buttons">
-        <button 
-          className="icon"
-          onClick={() => navigateTo('/shoppinglist')}>
-          <ListAltIcon />
-        </button>
-        <button 
+      </div>
+      <div className="icon-buttons">
+      <button 
         className="icon"
-        onClick={() => navigateTo('/shoppingcart')}>
-          <ShoppingCartIcon />
-        </button>
-        <button 
-        className="icon"
-        onClick={() => navigateTo('/account')}>
-          <Person2Icon />
-        </button>
+        onClick={() => navigateTo('/shoppinglist')}>
+        <ListAltIcon />
+      </button>
+      <button 
+      className="icon"
+      onClick={() => navigateTo('/shoppingcart')}>
+        <ShoppingCartIcon />
+      </button>
+      <button 
+      className="icon"
+      onClick={() => navigateTo('/account')}>
+        <Person2Icon />
+      </button>
 
-        </div>
+      </div>
         
     </header>
     </>
