@@ -6,6 +6,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Header = () => {
+  const navigateTo = (url: string) => {
+    window.location.href = url; 
+  };
   return(
     <>
     <header className="header">
@@ -17,13 +20,19 @@ const Header = () => {
           </div>
         </div>
         <div className="icon-buttons">
-        <button className="icon">
+        <button 
+          className="icon"
+          onClick={() => navigateTo('/shoppinglist')}>
           <ListAltIcon />
         </button>
-        <button className="icon">
+        <button 
+        className="icon"
+        onClick={() => navigateTo('/shoppingcart')}>
           <ShoppingCartIcon />
         </button>
-        <button className="icon">
+        <button 
+        className="icon"
+        onClick={() => navigateTo('/account')}>
           <Person2Icon />
         </button>
 
