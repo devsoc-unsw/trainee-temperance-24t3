@@ -3,8 +3,7 @@
   display: flex;
   align-items: center;
   padding: 20px 20px;
-  border-radius: 5px;
-  /* margin: 10px; */
+  border-radius: 10px;
 }
 
 .logo {
@@ -69,4 +68,49 @@
   font-size: 20px;
 }
 
+/* Responsive Design - Medium Screens */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 15px 10px;
+    gap: 10px;
+  }
 
+  .logo {
+    margin-right: 0;
+  }
+
+  .search-bar-wrapper {
+    max-width: 300px;
+    padding: 5px 10px;
+  }
+
+  .icon-buttons {
+    justify-content: center;
+    gap: 10px;
+    margin-left: 0;
+  }
+}
+
+/* Responsive Design - Mobile Screens */
+@media (max-width: 480px) {
+  .header {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .search-bar-wrapper {
+    max-width: 100%;
+    padding: 5px 8px;
+  }
+
+  .icon-buttons {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .icon {
+    width: 35px;
+    height: 35px;
+  }
+}
