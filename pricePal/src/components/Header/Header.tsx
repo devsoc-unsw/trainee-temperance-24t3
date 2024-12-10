@@ -12,7 +12,11 @@ const Header = () => {
   return(
     <>
     <header className="header">
+      <button 
+          className="logo"
+          onClick={() => navigateTo('/home')}>
         <div className="logo">LOGO HERE</div>
+      </button>
         <div className="search-bar-container">
           <div className="search-bar-wrapper">
             <SearchIcon className="search-icon" />
