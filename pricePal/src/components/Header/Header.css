@@ -25,6 +25,17 @@
   color: FFFFFF;
 }
 
+.search-bar-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 5px 15px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
 .search-bar {
   width: 100%;
   max-width: 400px;
@@ -33,7 +44,8 @@
   border: none;
   outline: none;
   font-size: 1rem;
-  color: 999999;
+  color: #999999;
+
 }
 
 .icon-buttons {
@@ -52,3 +64,10 @@
   border-radius: 50%;
   border-color: #ffffff;
 }
+
+.search-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+

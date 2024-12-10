@@ -1,6 +1,7 @@
 import React from "react";
 import './Home.css';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+import Header from "../../components/Header/Header";
 
 const Home = () => {
   const goToProfilePage = () => {
@@ -8,6 +9,7 @@ const Home = () => {
   }
   return(
     <>
+      <Header />
       <div> Home Page</div>
       <div className="home-main-container">
         <h1 className="">Bringing you low prices all day everyday</h1>
