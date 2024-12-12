@@ -37,6 +37,7 @@
   margin-bottom: 10px;
   object-fit: cover;
   border-radius: 8px;
+  padding-right: 7px;
 }
 
 /* Price and AddItemButton row */

@@ -14,7 +14,7 @@ interface FavoriteItemCardProps {
 const FavoriteItemCard = ({ itemName, itemImage, price, onHeartClick, onAddItemClick }: FavoriteItemCardProps) => {
 
   const addItemToCart = {
-    width: 500,
+    width: 100,
     height: 25
   }
 

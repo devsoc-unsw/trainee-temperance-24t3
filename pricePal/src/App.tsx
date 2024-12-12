@@ -5,6 +5,7 @@ import Profile from "./pages/Profile/Profile";
 import Search from "./pages/Search/Search";
 import Cart from "./pages/Cart/Cart";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import Favorites from "./pages/Favorites/Favorites";
 import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import { Auth } from '@supabase/auth-ui-react'
@@ -43,6 +44,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/landingPage" element={<LandingPage/>} />
+        <Route path="/favorites" element={<Favorites/>} />
       </Routes>
     </>
   )

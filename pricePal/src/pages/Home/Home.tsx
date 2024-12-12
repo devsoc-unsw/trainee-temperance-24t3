@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 ////////////////////////////////////////////////////////
 // import Heart from '../../components/Heart/Heart';
 // import AddItemButton from '../../components/AddItemButton/AddItemButton';
-// import ItemSearchCard from '../../components/ItemSearchCard/ItemSearchCard';
+import ItemSearchCard from '../../components/ItemSearchCard/ItemSearchCard';
 // import ShoppingCartCard from '../../components/ShoppingCartCard/ShoppingCartCard';
 // import FavoriteItemCard from '../../components/FavoriteItemCard/FavoriteItemCard';
 
@@ -30,6 +30,7 @@ const Home = () => {
         <ShoppingCartCard itemImage="https://gfproductsaustralia.com.au/wp-content/uploads/2022/04/Helgas-Gluten-Free-White-Bread-Slices-300x300.jpeg" price={4.26} itemName="fjdsakfdjs sajnd skajdhska"/>
         <FavoriteItemCard itemImage="https://gfproductsaustralia.com.au/wp-content/uploads/2022/04/Helgas-Gluten-Free-White-Bread-Slices-300x300.jpeg" price={4.826} itemName="fjdsakfdjs sajnd skajdhska"/> 
         ////////////////////////////////////////////////////////*/}
+        <ItemSearchCard storeName="woolies" plusOrMinusSign="+" itemImage="meat.png" price={4.1273} itemName="Coles White Bread"/>
       </div>
     </>
   )
