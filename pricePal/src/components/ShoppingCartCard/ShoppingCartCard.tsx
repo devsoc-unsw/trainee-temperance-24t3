@@ -7,15 +7,17 @@ interface ShoppingCartCardProps {
   itemName: string;
   itemImage: string;
   price: number;
+  store: string;
+  amount: number;
   onHeartClick: MouseEventHandler;
   onAddItemClick: MouseEventHandler;
 }
 
-const ShoppingCartCard = ({ itemName, itemImage, price, onHeartClick, onAddItemClick }: ShoppingCartCardProps) => {
+const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartClick, onAddItemClick }: ShoppingCartCardProps) => {
   // To decriment and increment each amount of item in the shopping cart.
-  const [amount, setAmount] = useState(0);
-  const incrementAmount = () => setAmount(prevAmount => prevAmount + 1);
-  const decrementAmount = () => setAmount(prevAmount => (prevAmount > 0 ? prevAmount - 1 : 0));
+  // const [amount, setAmount] = useState(0);
+  // const incrementAmount = () => setAmount(prevAmount => prevAmount + 1);
+  // const decrementAmount = () => setAmount(prevAmount => (prevAmount > 0 ? prevAmount - 1 : 0));
 
   const addMinusHeightWidth = {
     width: 38,
@@ -42,7 +44,7 @@ const ShoppingCartCard = ({ itemName, itemImage, price, onHeartClick, onAddItemC
               storeName="" 
               width={addMinusHeightWidth.width} 
               height={addMinusHeightWidth.height} 
-              handler={decrementAmount}
+              handler={() => {}}
             />
             <h1 className="amount">{amount}</h1>
             <AddItemButton 
@@ -50,7 +52,11 @@ const ShoppingCartCard = ({ itemName, itemImage, price, onHeartClick, onAddItemC
               storeName="" 
               width={addMinusHeightWidth.width} 
               height={addMinusHeightWidth.height} 
-              handler={incrementAmount}
+              handler={ (e) => {
+                  console.log("test");
+                  onAddItemClick(e);
+                }
+              }
             />
           </div>
           <h1 className="shopping-item-price">{"$ " + price}</h1>
