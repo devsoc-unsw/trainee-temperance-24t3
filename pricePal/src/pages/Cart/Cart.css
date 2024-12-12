@@ -6,6 +6,10 @@
     /* max-height: 515px; */
 }
 
+.shopping-cart-total {
+    padding-top: 20px;
+}
+
 .cart-divider {
     display: block;
     border-left: 1px solid black;
@@ -40,5 +44,15 @@
         /* justify-content: space-evenly; */
         /* flex-grow: 1; */
         /* max-height: 500px;   */
+    }
+
+    .shopping-cart-total {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 1400px) {
+    .shopping-cart-total {
+        padding-top: 0;
     }
 }

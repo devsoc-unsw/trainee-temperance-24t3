@@ -2,6 +2,7 @@ import React, { MouseEventHandler, useState } from "react";
 import './ShoppingCartCard.css'
 import Heart from '../Heart/Heart.tsx';
 import AddItemButton from '../AddItemButton/AddItemButton.tsx';
+import Header from "../../components/Header/Header";
 
 interface ShoppingCartCardProps {
   itemName: string;

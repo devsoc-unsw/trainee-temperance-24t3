@@ -11,38 +11,40 @@ const Header = () => {
   };
   return(
     <>
-    <header className="header">
-      <button 
-          className="logo"
-          onClick={() => navigateTo('/home')}>
-          <div className="logo">LOGO HERE</div>
-      </button>
-      <div className="search-bar-container">
-        <div className="search-bar-wrapper">
-          <SearchIcon className="search-icon" />
-          <input type="text" className="search-bar" placeholder="Search for grocery items"/>
+    <div className="header-wrapper">
+      <header className="header">
+        <div 
+            className="logo"
+            onClick={() => navigateTo('/landingPage')}>
+            PricePal
         </div>
-      </div>
-      <div className="icon-buttons">
-      <button 
+        <div className="search-bar-container">
+          <div className="search-bar-wrapper">
+            <SearchIcon className="search-icon" />
+            <input type="text" className="search-bar" placeholder="Search for grocery items"/>
+          </div>
+        </div>
+        <div className="icon-buttons">
+        <button 
+          className="icon"
+          onClick={() => navigateTo('/favorites')}>
+          <ListAltIcon />
+        </button>
+        <button 
         className="icon"
-        onClick={() => navigateTo('/shoppinglist')}>
-        <ListAltIcon />
-      </button>
-      <button 
-      className="icon"
-      onClick={() => navigateTo('/cart')}>
-        <ShoppingCartIcon />
-      </button>
-      <button 
-      className="icon"
-      onClick={() => navigateTo('/profile')}>
-        <Person2Icon />
-      </button>
+        onClick={() => navigateTo('/cart')}>
+          <ShoppingCartIcon />
+        </button>
+        <button 
+        className="icon"
+        onClick={() => navigateTo('/profile')}>
+          <Person2Icon />
+        </button>
 
-      </div>
-        
-    </header>
+        </div>
+          
+      </header>
+    </div>
     </>
   );
 };
