@@ -11,9 +11,10 @@ interface ShoppingCartCardProps {
   amount: number;
   onHeartClick: MouseEventHandler;
   onAddItemClick: MouseEventHandler;
+  onMinusItemClick: MouseEventHandler;
 }
 
-const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartClick, onAddItemClick }: ShoppingCartCardProps) => {
+const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartClick, onAddItemClick, onMinusItemClick }: ShoppingCartCardProps) => {
   // To decriment and increment each amount of item in the shopping cart.
   // const [amount, setAmount] = useState(0);
   // const incrementAmount = () => setAmount(prevAmount => prevAmount + 1);
@@ -44,7 +45,11 @@ const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartCl
               storeName="" 
               width={addMinusHeightWidth.width} 
               height={addMinusHeightWidth.height} 
-              handler={() => {}}
+              handler={(e) => {
+                console.log("decriment");
+                onMinusItemClick(e);
+              }
+            }
             />
             <h1 className="amount">{amount}</h1>
             <AddItemButton 
@@ -52,8 +57,8 @@ const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartCl
               storeName="" 
               width={addMinusHeightWidth.width} 
               height={addMinusHeightWidth.height} 
-              handler={ (e) => {
-                  console.log("test");
+              handler={(e) => {
+                  console.log("increment");
                   onAddItemClick(e);
                 }
               }

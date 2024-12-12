@@ -32,20 +32,36 @@ const ShoppingCartList = ({headerType, shop, subtotal, onSubtotalChange} : Shopp
     }
     console.log(amount)
 
-    const handleAmount = async (index : number) => {
+    const handlePlusAmount = async (index : number) => {
         let amount2 = amount;
         amount2[index]++;
         setAmount([...amount2]);
     }
+
+    const handleMinusAmount = async (index : number) => {
+        if (amount[index] !== 0) {
+            let amount2 = amount;
+            amount2[index]--;
+            setAmount([...amount2]);
+        }
+    }
+
     // Filter items by matching store with the shop prop
     const filteredItems = items.filter(item => item.store === shop);
 
     // Calculate subtotal by summing up all item prices
     // const subtotal = filteredItems.reduce((total, item) => total + item.price, 0);
 
-    const handleTotal = async (index : number) => {
+    const handlePlusTotal = async (index : number) => {
         subtotal += filteredItems[index].price;
         onSubtotalChange(subtotal);
+    }
+
+    const handleMinusTotal = async (index : number) => {
+        if (subtotal !== 0) {
+            subtotal -= filteredItems[index].price;
+            onSubtotalChange(subtotal);
+        }
     }
         
     // // Notify parent about the subtotal when it changes
@@ -68,8 +84,12 @@ const ShoppingCartList = ({headerType, shop, subtotal, onSubtotalChange} : Shopp
                         amount={amount[index]}
                         itemName={item.itemName} 
                         onAddItemClick={() => {
-                            handleTotal(index);
-                            handleAmount(index);    
+                            handlePlusTotal(index);
+                            handlePlusAmount(index);    
+                        }} 
+                        onMinusItemClick={() => {
+                            handleMinusTotal(index);
+                            handleMinusAmount(index);    
                         }} 
                         onHeartClick={() => {}} 
                     />
