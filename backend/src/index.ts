@@ -1,6 +1,7 @@
 // src/index.ts
 import express, { Request, Response } from 'express';
 import { createClient } from '@supabase/supabase-js';
+import cors from 'cors';
 
 
 // Create an Express app
@@ -9,6 +10,11 @@ const port = 3000;
 const supabaseURl = '';
 const apiKey = '';
 const supabase = createClient(supabaseURl, apiKey)
+
+// Enable CORS for requests from http://localhost:5173
+app.use(cors({
+  origin: 'http://localhost:5173'
+}));
 
 
 // Middleware to parse JSON bodies

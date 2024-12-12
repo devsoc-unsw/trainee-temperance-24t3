@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import './Search.css';
 import GreyContainer from "../../components/GreyContainer/GreyContainer";
 import SortDropDown from "../../components/SortDropDown/SortDropDown";
@@ -9,6 +9,30 @@ const Search = () => {
     setCurrSort(newCurrSort);
     console.log(newCurrSort);
   }
+  const fetchProducts = async (name: string, category: string[]) => {
+    try {
+      const response = await fetch('http://localhost:3000/fetch', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, category }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts('Whisky', ['alcoholic']);
+  }, [])
 
   return(
     <>
