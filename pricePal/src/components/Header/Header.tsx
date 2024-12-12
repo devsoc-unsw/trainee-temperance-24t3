@@ -14,7 +14,7 @@ const Header = () => {
     <header className="header">
       <button 
           className="logo"
-          onClick={() => navigateTo('/home')}>
+          onClick={() => navigateTo('/')}>
           <div className="logo">LOGO HERE</div>
       </button>
       <div className="search-bar-container">
@@ -26,7 +26,7 @@ const Header = () => {
       <div className="icon-buttons">
       <button 
         className="icon"
-        onClick={() => navigateTo('/shoppinglist')}>
+        onClick={() => navigateTo('/favourites')}>
         <ListAltIcon />
       </button>
       <button 
