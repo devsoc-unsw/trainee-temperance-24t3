@@ -31,7 +31,7 @@ const Header = () => {
       </button>
       <button 
       className="icon"
-      onClick={() => navigateTo('/shoppingcart')}>
+      onClick={() => navigateTo('/cart')}>
         <ShoppingCartIcon />
       </button>
       <button 
