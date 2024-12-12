@@ -2,14 +2,17 @@
 import express, { Request, Response } from 'express';
 import { createClient } from '@supabase/supabase-js';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
-
+dotenv.config();
 // Create an Express app
 const app = express();
 const port = 3000;
-const supabaseURl = '';
-const apiKey = '';
-const supabase = createClient(supabaseURl, apiKey)
+const supabaseUrl = process.env.SUPABASE_URL || '';
+console.log(supabaseUrl);
+const apiKey = process.env.SUPABASE_KEY || '';
+console.log(apiKey);
+const supabase = createClient(supabaseUrl, apiKey)
 
 // Enable CORS for requests from http://localhost:5173
 app.use(cors({
