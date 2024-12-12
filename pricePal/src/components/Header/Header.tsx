@@ -36,7 +36,7 @@ const Header = () => {
       </button>
       <button 
       className="icon"
-      onClick={() => navigateTo('/account')}>
+      onClick={() => navigateTo('/profile')}>
         <Person2Icon />
       </button>
 
