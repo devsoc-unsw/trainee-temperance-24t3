@@ -1,0 +1,51 @@
+#search-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0.3em;
+}
+
+#search-page-flex-container {
+  flex-grow: 1;
+}
+
+#search-products-filter-container{
+  display: flex;
+  justify-content: space-between;  
+  flex-direction: row;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+#search-products-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+#search-products-filter-sort{
+  display: flex;
+  align-items: center;
+}
+
+.search-products-title-header {
+  width: 47%;
+  text-align: center;
+  padding: 0.5em;
+  font-size: 1.5em;
+}
+
+#search-products-coles-header {
+  background-color: #ED1C22;
+  color: #FFFFFF;
+}
+
+#search-products-woolies-header {
+  background-color: #118745;
+  color: #FFFFFF;
+}

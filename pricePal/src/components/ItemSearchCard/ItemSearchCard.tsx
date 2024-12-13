@@ -24,7 +24,9 @@ const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign
       </div>
 
       {/* Item image */}
-      <img className="search-item-image" src={itemImage} alt={itemName}/>
+      <div className="search-item-image-box">
+        <img className="search-item-image" src={itemImage} alt={itemName}/>
+      </div>
 
       {/* Footer: price and add button */}
       <div className="search-item-footer">
