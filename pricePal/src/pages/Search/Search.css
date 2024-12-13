@@ -70,3 +70,16 @@
   align-items: center; /* Optional: to vertically center the content */
   margin-right: 10px;
 }
+
+#category-filter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  margin-left: 15px;
+  margin-right: 10px; 
+}
+
+
+#category-filter h2 {
+  margin: 0; /* Removes default margin to ensure better alignment */
+}

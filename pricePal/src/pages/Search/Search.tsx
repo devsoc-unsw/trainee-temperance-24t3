@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './Search.css'
 import ItemSearchList from '../../components/ItemSearchList/ItemSearchList';
 import SortDropDown from "../../components/SortDropDown/SortDropDown";
+import CategoryDropDown from "../../components/CategoryDropDown/CategoryDropDown";
 
 const Cart = () => {
     const sortBy = ['Lowest unit price', 'Closest match', 'Price (low to high)', 'Price (high to low)'];
@@ -20,6 +21,11 @@ const Cart = () => {
                 </div>
 
                 <div className="custom-divider"></div>  {/* Styled div for the line */}
+
+                <div id ='category-filter'>
+                    <h2>Filter by:</h2>
+                    <CategoryDropDown />
+                </div>
 
                 <div id='search-products-filter-sort'>
                     <h2 style={{'marginRight': '10px'}}>Sort by:</h2>
