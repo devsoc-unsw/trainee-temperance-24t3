@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import './Heart.css';
 
+// DO I SAVE THE FAVORITES HERE IF THE HEART IS CLICKED? SO FOR 
+// EVERY CARD I PASS THE ID OF THE ITEM TO THE HEART COMPONENT?
+
 interface HeartProps {
   handler: MouseEventHandler;
 }

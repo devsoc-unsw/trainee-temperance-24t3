@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 import { createClient } from '@supabase/supabase-js'
 // import { Auth } from '@supabase/auth-ui-react';
 
-const supabase = createClient('https link', 'API KEY')
+const supabase = createClient('https://wfqmymitwnqxlgoasfvr.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndmcW15bWl0d25xeGxnb2FzZnZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM5ODg3NjUsImV4cCI6MjA0OTU2NDc2NX0.foKhwkRPoLHqMAwQZe1cYyqPigBvp-KTysmgLF6kG58')
 
 async function signOut() {
   const { error } = await supabase.auth.signOut()
