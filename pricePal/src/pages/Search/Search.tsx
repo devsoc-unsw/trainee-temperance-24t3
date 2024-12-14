@@ -100,7 +100,7 @@ const Search = () => {
   return(
     <>
       <Header/>
-      <div className='profile-flex'>
+      <div className='search-flex'>
           {/* <div> search page </div> */}
           <div className="item-search-box">
               <div className="item-search-header">

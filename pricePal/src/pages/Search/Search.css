@@ -1,3 +1,10 @@
+.search-flex{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
 .item-search-body {
   display: flex;
   flex-direction: row;
@@ -9,11 +16,12 @@
 .item-search-header {
   /* background-color: black; */
   height: 3%;
-  padding: 10px 40px;
+  padding: 1em 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-size: 1.5em;
 }
 
 .cart-divider {
