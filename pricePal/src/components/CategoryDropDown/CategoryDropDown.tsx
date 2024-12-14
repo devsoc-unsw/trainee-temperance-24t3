@@ -16,7 +16,7 @@ const CategoryDropDown: React.FC = () => {
     const searchTerm = event.target.value.toUpperCase();
     setFilter(searchTerm);
 
-    // Automatically expand the first matching category
+    // Expand first matching category
     const matchingCategory = categories.find(category => {
       return (
         category.name.toUpperCase().includes(searchTerm) ||
@@ -24,13 +24,17 @@ const CategoryDropDown: React.FC = () => {
       );
     });
 
-    setExpandedCategory(matchingCategory ? matchingCategory.name : null);
+    if (matchingCategory) {
+      setExpandedCategory(matchingCategory.name);
+    } else {
+      setExpandedCategory(null);
+    }
   };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setIsOpen(false);
-      setExpandedCategory(null); // Close all submenus
+      setExpandedCategory(null);
     }
   };
 
@@ -111,7 +115,7 @@ const CategoryDropDown: React.FC = () => {
         subcategory.toUpperCase().includes(filter)
       );
 
-      // Include category if name matches filter or subcategories 
+      // Include category if name matches filter or subcategories
       if (category.name.toUpperCase().includes(filter) || filteredSubcategories.length > 0) {
         return {
           ...category,
@@ -143,24 +147,24 @@ const CategoryDropDown: React.FC = () => {
             <div key={index} className="dropdown-item">
               <div
                 className="main-category"
-                onClick={() =>
-                  setExpandedCategory(expandedCategory === category.name ? null : category.name)
-                }>
+                onClick={() => {
+                  if (expandedCategory === category.name) {
+                    setExpandedCategory(null);
+                  } else {
+                    setExpandedCategory(category.name);
+                  }
+                }}>
                 {category.name}
                 {category.subcategories.length > 0 && (
                   <KeyboardArrowDownIcon
-                    className={`arrow-icon ${
-                      expandedCategory === category.name ? "open" : ""
-                    }`}
+                    className={`arrow-icon ${expandedCategory === category.name && "open"}`}
                   />
                 )}
               </div>
               {expandedCategory === category.name && category.subcategories.length > 0 && (
                 <div className="sub-dropdown-content">
                   {category.subcategories.map((sub, subIndex) => (
-                    <a key={subIndex} href={`#${sub.toLowerCase()}`}>
-                      {sub}
-                    </a>
+                    <a key={subIndex} href={`#${sub.toLowerCase()}`}>{sub}</a>
                   ))}
                 </div>
               )}
