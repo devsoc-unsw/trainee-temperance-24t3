@@ -5,6 +5,7 @@ import './Search.css';
 import SortDropDown from "../../components/SortDropDown/SortDropDown";
 import Header from "../../components/Header/Header";
 import ItemSearchList from '../../components/ItemSearchList/ItemSearchList';
+import CategoryDropDown from "../../components/CategoryDropDown/CategoryDropDown";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -70,7 +71,13 @@ const Search = () => {
                   <text className="account-title">Showing search for "{searchQuery}"</text>
               </div>
 
-              <div className="custom-divider"></div>  {/* Styled div for the line */}
+                <div className="custom-divider"></div>  {/* Styled div for the line */}
+
+                <div id ='category-filter'>
+                    <h2>Filter by:</h2>
+                    <CategoryDropDown />
+                </div>
+
 
               <div id='search-products-filter-sort'>
                   <h2 style={{'marginRight': '10px'}}>Sort by:</h2>
