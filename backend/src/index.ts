@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 // Create an Express app
 const app = express();
-const port = 8080;
+const port = 3000;
 const supabaseUrl = process.env.SUPABASE_URL || '';
 const apiKey = process.env.SUPABASE_KEY || '';
 const supabase = createClient(supabaseUrl, apiKey)
@@ -57,7 +57,13 @@ async function fetchProducts(name?: string, category?: string[]) {
   return data;
 };
 
+app.get('/', (req: Request, res: Response) => {
+  res.send('Your app finally works!');
+});
+
+
+
 // Start the server
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
