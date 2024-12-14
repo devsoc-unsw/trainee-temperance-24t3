@@ -5,7 +5,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 const CategoryDropDown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [filter, setFilter] = useState("");
-  const [expandedCategory, setExpandedCategory] = useState<string | null>(null); // Tracks which category should remain open
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleToggleDropdown = () => {
@@ -157,8 +157,7 @@ const CategoryDropDown: React.FC = () => {
                 {category.name}
                 {category.subcategories.length > 0 && (
                   <KeyboardArrowDownIcon
-                    className={`arrow-icon ${expandedCategory === category.name && "open"}`}
-                  />
+                    className={`arrow-icon ${expandedCategory === category.name && "open"}`}/>
                 )}
               </div>
               {expandedCategory === category.name && category.subcategories.length > 0 && (
