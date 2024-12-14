@@ -2,7 +2,7 @@ import React, { MouseEventHandler, useState } from "react";
 import './ShoppingCartCard.css'
 import Heart from '../Heart/Heart.tsx';
 import AddItemButton from '../AddItemButton/AddItemButton.tsx';
-import Header from "../../components/Header/Header";
+import { useCart } from '../../CartContext';
 
 interface ShoppingCartCardProps {
   itemName: string;
@@ -11,15 +11,30 @@ interface ShoppingCartCardProps {
   store: string;
   amount: number;
   onHeartClick: MouseEventHandler;
-  onAddItemClick: MouseEventHandler;
-  onMinusItemClick: MouseEventHandler;
+  // onAddItemClick: MouseEventHandler;
+  // onMinusItemClick: MouseEventHandler;
 }
 
-const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartClick, onAddItemClick, onMinusItemClick }: ShoppingCartCardProps) => {
+const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartClick }: ShoppingCartCardProps) => {
   // To decriment and increment each amount of item in the shopping cart.
   // const [amount, setAmount] = useState(0);
   // const incrementAmount = () => setAmount(prevAmount => prevAmount + 1);
   // const decrementAmount = () => setAmount(prevAmount => (prevAmount > 0 ? prevAmount - 1 : 0));
+
+  const { cartItems, addItemToCart, removeItemFromCart } = useCart(); // Get the add and remove functions from the CartContext
+  const itemInCart = cartItems.find(item => item.itemName === itemName);
+
+  // Add item to cart when clicked
+  const handleAddItemClick = () => {
+    const item = { itemName, itemImage, price, storeName: store, quantity: 1 };
+    addItemToCart(item); // Add the item to the cart
+  };
+
+  // Remove item from cart when clicked
+  const handleMinusItemClick = () => {
+    const item = { itemName, itemImage, price, storeName: store, quantity: 1 };
+    removeItemFromCart(item); // Remove the item from the cart
+  };
 
   const addMinusHeightWidth = {
     width: 38,
@@ -45,24 +60,26 @@ const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartCl
               plusOrMinusSign="-" 
               storeName="" 
               width={addMinusHeightWidth.width} 
-              height={addMinusHeightWidth.height} 
-              handler={(e) => {
-                console.log("decriment");
-                onMinusItemClick(e);
-              }
-            }
+              height={addMinusHeightWidth.height}
+              handler={handleMinusItemClick} 
+              // handler={(e) => {
+              //     console.log("decriment");
+              //     onMinusItemClick(e);
+              //   }
+              // }
             />
-            <h1 className="amount">{amount}</h1>
+            <h1 className="amount">{itemInCart ? itemInCart.quantity : 0}</h1>
             <AddItemButton 
               plusOrMinusSign="+" 
               storeName="" 
               width={addMinusHeightWidth.width} 
               height={addMinusHeightWidth.height} 
-              handler={(e) => {
-                  console.log("increment");
-                  onAddItemClick(e);
-                }
-              }
+              handler={handleAddItemClick}
+              // handler={(e) => {
+              //     console.log("increment");
+              //     onAddItemClick(e);
+              //   }
+              // }
             />
           </div>
           <h1 className="shopping-item-price">{"$ " + price}</h1>

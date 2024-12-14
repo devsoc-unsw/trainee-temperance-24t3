@@ -2,6 +2,7 @@ import React, { MouseEventHandler } from "react";
 import './ItemSearchCard.css';
 import Heart from '../Heart/Heart.tsx';
 import AddItemButton from '../AddItemButton/AddItemButton';
+import { useCart } from '../../CartContext';
 
 interface ItemSearchCardProps {
   itemName: string;
@@ -14,6 +15,14 @@ interface ItemSearchCardProps {
 }
 
 const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign, onHeartClick, onAddItemClick }: ItemSearchCardProps) => {
+
+  const { addItemToCart } = useCart(); // Get addItemToCart from context
+
+  // Handler for adding item to the cart
+  const handleAddItem = () => {
+    addItemToCart({ itemName, itemImage, price, storeName, quantity: 1 });
+    if (onAddItemClick) onAddItemClick(); 
+  };
 
   return(
     <div className="search-item-card">
@@ -37,7 +46,7 @@ const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign
             storeName={storeName} 
             width={48}
             height={27}
-            handler={onAddItemClick}
+            handler={handleAddItem}
           />
         </div>
       </div>

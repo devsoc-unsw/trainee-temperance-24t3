@@ -13,7 +13,7 @@ const Cart = () => {
     return(
         <>
             <Header />
-            <div className='profile-flex'>
+            <div className='shopping-cart-flex'>
                 {/* <div> Shopping Cart </div> */}
                 <div className="shopping-cart-box">
                     <div className="account-header">
@@ -25,7 +25,7 @@ const Cart = () => {
                         {/* <div className="cart-divider"></div> */}
                         <ShoppingCartList headerType='woolies-header' shop="Woolsworth" subtotal={wooliesSubtotal} onSubtotalChange={(subtotal) => setWooliesSubtotal(subtotal)}></ShoppingCartList>
                     </div>
-                    <div className="shopping-cart-total shopping-cart-text">Total: ${total.toFixed(2)}</div>
+                    <div className="shopping-cart-total">Total: ${total.toFixed(2)}</div>
                 </div>
             </div>
         </>

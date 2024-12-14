@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ShoppingCartCard from "../ShoppingCartCard/ShoppingCartCard";
 import './ShoppingCartList.css'
+import { useCart, CartItem } from '../../CartContext';
+
 interface ShoppingCartListProps {
     headerType: string,
     shop: string,
@@ -8,61 +10,75 @@ interface ShoppingCartListProps {
     onSubtotalChange: (subtotal: number) => void;
 }
 
-const items = [
-    { itemImage: "meat.png", price: 4.123, store: "Coles", itemName: "Coles White Bread"},
-    { itemImage: "meat.png", price: 4.26, store: "Woolsworth", itemName: "Item 2" },
-    { itemImage: "meat.png", price: 4.26, store: "Coles", itemName: "Item 3" },
-    { itemImage: "fruits.png", price: 4.26, store: "Coles", itemName: "Item 2" },
-    { itemImage: "meat.png", price: 4.26, store: "Woolsworth", itemName: "Item 3" },
-    { itemImage: "meat.png", price: 4.26, store: "Coles", itemName: "Item 2" },
-    { itemImage: "dairy.png", price: 4.26, store: "Woolsworth", itemName: "Item 3" }
-];
-
 const ShoppingCartList = ({headerType, shop, subtotal, onSubtotalChange} : ShoppingCartListProps) => {
-    const [amount, setAmount] = useState<number[]>([]);
+      const { cartItems, addItemToCart, removeItemFromCart } = useCart();
+      const filteredItems: CartItem[] = cartItems.filter(item => item.storeName === shop);
+      
+      const [amount, setAmount] = useState<number[]>([]);
+
+      useEffect(() => {
+        const newSubtotal = filteredItems.reduce((total, item) => total + item.price * item.quantity, 0);
+        onSubtotalChange(newSubtotal);
+      }, [cartItems, shop, onSubtotalChange]);
+
+      // Handle adding to cart (increase quantity)
+      const handleAddItemClick = (itemName: string) => {
+      const item = cartItems.find(item => item.itemName === itemName);
+      if (item) {
+        addItemToCart(item);
+      }
+    };
+
+    // Handle removing from cart (decrease quantity)
+    const handleMinusItemClick = (itemName: string) => {
+    const item = cartItems.find(item => item.itemName === itemName);
+    if (item && item.quantity > 1) {
+      removeItemFromCart(item);
+    } else {
+      // If quantity is 1, remove the item completely
+      removeItemFromCart(item);
+    }
+    };
     
-    console.log(amount.length)
-    if (amount.length === 0) {
-        let temp : number[] = [];
-        for (const index in items) {
-            temp[index] = 0;
-        }
+    // console.log(amount.length)
+    // if (amount.length === 0) {
+    //     let temp : number[] = [];
+    //     for (const index in items) {
+    //         temp[index] = 0;
+    //     }
 
-        setAmount(temp);
-    }
-    console.log(amount)
+    //     setAmount(temp);
+    // }
+    // console.log(amount)
 
-    const handlePlusAmount = async (index : number) => {
-        let amount2 = amount;
-        amount2[index]++;
-        setAmount([...amount2]);
-    }
+    // const handlePlusAmount = async (index : number) => {
+    //     let amount2 = amount;
+    //     amount2[index]++;
+    //     setAmount([...amount2]);
+    // }
 
-    const handleMinusAmount = async (index : number) => {
-        if (amount[index] !== 0) {
-            let amount2 = amount;
-            amount2[index]--;
-            setAmount([...amount2]);
-        }
-    }
-
-    // Filter items by matching store with the shop prop
-    const filteredItems = items.filter(item => item.store === shop);
+    // const handleMinusAmount = async (index : number) => {
+    //     if (amount[index] !== 0) {
+    //         let amount2 = amount;
+    //         amount2[index]--;
+    //         setAmount([...amount2]);
+    //     }
+    // }
 
     // Calculate subtotal by summing up all item prices
     // const subtotal = filteredItems.reduce((total, item) => total + item.price, 0);
 
-    const handlePlusTotal = async (index : number) => {
-        subtotal += filteredItems[index].price;
-        onSubtotalChange(subtotal);
-    }
+    // const handlePlusTotal = async (index : number) => {
+    //     subtotal += filteredItems[index].price;
+    //     onSubtotalChange(subtotal);
+    // }
 
-    const handleMinusTotal = async (index : number) => {
-        if (subtotal !== 0) {
-            subtotal -= filteredItems[index].price;
-            onSubtotalChange(subtotal);
-        }
-    }
+    // const handleMinusTotal = async (index : number) => {
+    //     if (subtotal !== 0) {
+    //         subtotal -= filteredItems[index].price;
+    //         onSubtotalChange(subtotal);
+    //     }
+    // }
         
     // // Notify parent about the subtotal when it changes
     // useEffect(() => {
@@ -80,17 +96,17 @@ const ShoppingCartList = ({headerType, shop, subtotal, onSubtotalChange} : Shopp
                         key={index} 
                         itemImage={item.itemImage} 
                         price={item.price} 
-                        store={item.store}
+                        store={item.storeName}
                         amount={amount[index]}
                         itemName={item.itemName} 
-                        onAddItemClick={() => {
-                            handlePlusTotal(index);
-                            handlePlusAmount(index);    
-                        }} 
-                        onMinusItemClick={() => {
-                            handleMinusTotal(index);
-                            handleMinusAmount(index);    
-                        }} 
+                        // onAddItemClick={() => {
+                        //     handlePlusTotal(index);
+                        //     handlePlusAmount(index);    
+                        // }} 
+                        // onMinusItemClick={() => {
+                        //     handleMinusTotal(index);
+                        //     handleMinusAmount(index);    
+                        // }} 
                         onHeartClick={() => {}} 
                     />
                 ))}

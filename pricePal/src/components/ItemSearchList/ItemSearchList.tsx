@@ -6,9 +6,22 @@ interface ItemSearchListProps {
     data: object[]
 }
 
+const items = [
+    { itemImage: "meat.png", price: 4.123, store: "Coles", itemName: "Coles White Bread"},
+    { itemImage: "meat.png", price: 4.26, store: "Woolsworth", itemName: "Item 21" },
+    { itemImage: "meat.png", price: 4.26, store: "Coles", itemName: "Item 32" },
+    { itemImage: "fruits.png", price: 4.26, store: "Coles", itemName: "Item 23" },
+    { itemImage: "meat.png", price: 4.26, store: "Woolsworth", itemName: "Item 34" },
+    { itemImage: "meat.png", price: 4.26, store: "Coles", itemName: "Item 25" },
+    { itemImage: "dairy.png", price: 4.26, store: "Woolsworth", itemName: "Item 36" }
+];
+
 const ItemSearchList = ({headerType, shop, data} : ItemSearchListProps) => {
     // console.log("list");
     // console.log(data);
+
+    const filteredStore = items.filter(item => item.store === shop);
+
     return(
         <div className="search-list-body">
             <div className={headerType}>
@@ -29,9 +42,17 @@ const ItemSearchList = ({headerType, shop, data} : ItemSearchListProps) => {
                     ))
                 }
 
-                <ItemSearchCard storeName="woolies" plusOrMinusSign="+" itemImage="meat.png" price={4.1273} itemName="Coles White Bread" onHeartClick={() => {}} onAddItemClick={() => {}}/>
-                <ItemSearchCard storeName="woolies" plusOrMinusSign="+" itemImage="dairy.png" price={4.1273} itemName="Coles White Bread" onHeartClick={() => {}} onAddItemClick={() => {}}/>
-                <ItemSearchCard storeName="woolies" plusOrMinusSign="+" itemImage="fruits.png" price={4.1273} itemName="Coles White Bread" onHeartClick={() => {}} onAddItemClick={() => {}}/>
+                {filteredStore.map((item, index) => (
+                    <ItemSearchCard 
+                    storeName={item.store}
+                    price={item.price} 
+                    itemImage={item.itemImage}
+                    itemName={item.itemName}
+                    plusOrMinusSign="+"
+                    onHeartClick={() => {}}
+                    onAddItemClick={() => {}}
+                    />
+                ))}
             </div>
         </div>
     )
