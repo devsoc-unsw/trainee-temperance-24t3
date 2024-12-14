@@ -57,23 +57,23 @@ const Header = () => {
             />
           </div>
         </div>
+        
         <div className="icon-buttons">
-        <button 
-          className="icon"
-          onClick={() => navigateTo('/favorites')}>
-          <ListAltIcon />
-        </button>
-        <button 
-        className="icon"
-        onClick={() => navigateTo('/cart')}>
-          <ShoppingCartIcon />
-        </button>
-        <button 
-        className="icon"
-        onClick={() => navigateTo('/profile')}>
-          <Person2Icon />
-        </button>
-
+          <button 
+            className="icon"
+            onClick={() => navigateTo('/favorites')}>
+            <ListAltIcon />
+          </button>
+          <button 
+            className="icon"
+            onClick={() => navigateTo('/cart')}>
+            <ShoppingCartIcon />
+          </button>
+          <button 
+            className="icon"
+            onClick={() => navigateTo('/profile')}>
+            <Person2Icon />
+          </button>
         </div>
           
       </header>

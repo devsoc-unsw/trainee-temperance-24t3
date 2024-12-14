@@ -49,7 +49,7 @@ const Search = () => {
     const query = searchParams.get('query');
     setSearchQuery(query);
   }, [searchParams]);
-
+  
     return(
         <>
             <Header/>
