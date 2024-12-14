@@ -88,9 +88,33 @@ const CategoryDropDown: React.FC = () => {
     },
   ];
 
-  const filteredCategories = categories.filter(category =>
-    category.name.toUpperCase().includes(filter)
-  );
+  // const filteredCategories = categories.filter(category =>
+  //   category.name.toUpperCase().includes(filter)
+  // );
+
+  // const handleSubMenuToggle = (categoryName: string) => {
+  //   setOpenSubMenu(openSubMenu === categoryName ? null : categoryName);
+  // };
+
+    // Filter categories and subcategories
+    const filteredCategories = categories
+    .map(category => {
+      const filteredSubcategories = category.subcategories.filter(subcategory =>
+        subcategory.toUpperCase().includes(filter)
+      );
+
+      // Include the category if:
+      // - Its name matches the filter, OR
+      // - It has matching subcategories
+      if (category.name.toUpperCase().includes(filter) || filteredSubcategories.length > 0) {
+        return {
+          ...category,
+          subcategories: filteredSubcategories,
+        };
+      }
+      return null;
+    })
+    .filter(category => category !== null) as typeof categories;
 
   const handleSubMenuToggle = (categoryName: string) => {
     setOpenSubMenu(openSubMenu === categoryName ? null : categoryName);
