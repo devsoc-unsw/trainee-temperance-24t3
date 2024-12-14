@@ -6,14 +6,27 @@
   /* max-height: 515px; */
 }
 
+.favorite-flex {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
 .favorite-header {
   /* background-color: black; */
-  height: 3%;
+  height: 8%;
   padding: 10px 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.favorite-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.4em;
 }
 
 .cart-divider {

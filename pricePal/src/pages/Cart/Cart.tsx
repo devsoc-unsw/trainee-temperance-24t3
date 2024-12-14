@@ -16,8 +16,8 @@ const Cart = () => {
             <div className='shopping-cart-flex'>
                 {/* <div> Shopping Cart </div> */}
                 <div className="shopping-cart-box">
-                    <div className="account-header">
-                        <text className="account-title">Shopping Cart</text>
+                    <div className="shopping-cart-header">
+                        <text className="shopping-cart-title">Shopping Cart</text>
                     </div>
 
                     <div className="shopping-cart-body">
