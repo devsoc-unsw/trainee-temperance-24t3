@@ -39,7 +39,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/profile" element={<Profile />} />
+        {/* <Route path="/profile" element={<Profile />} /> */}
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/favorites" element={<Favorites/>} />
