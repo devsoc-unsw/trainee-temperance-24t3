@@ -9,6 +9,11 @@ const supabase = createClient(supabaseUrl, apiKey);
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
 
+
+//
+// TODO: -refactor using python bcs this doesn't work !!!!!!!
+//
+
 // Navigate the page to a URL.
 await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36')
 await page.setExtraHTTPHeaders({
