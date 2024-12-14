@@ -76,10 +76,12 @@
   justify-content: flex-start;
   align-items: center; 
   margin-left: 15px;
-  margin-right: 10px; 
+  margin-right: 10px;
+  position: relative;
+  top: 55px; 
 }
 
-
 #category-filter h2 {
-  margin: 0; /* Removes default margin to ensure better alignment */
+  margin: 0; 
+  padding-right: 10px; 
 }

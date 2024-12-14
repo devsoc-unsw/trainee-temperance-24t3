@@ -1,4 +1,3 @@
-/* Dropdown Button */
 .dropbtn {
   background-color: #d9d9d9;
   color: black;
@@ -19,8 +18,8 @@
 
 .dropbtn-content {
   display: flex;
-  align-items: center; /* Vertically centers items */
-  justify-content: center; /* Ensures center alignment */
+  align-items: center; 
+  justify-content: center; 
   width: 100%;
 }
 
