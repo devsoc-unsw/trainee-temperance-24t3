@@ -53,7 +53,7 @@
 .search-item-image {
   /* /// FIX THE WIDTH !!! /// */
   /* width: clamp(170px, 50%, 220px); */
-  max-height: 200px;
+  max-height: 180px;
 }
 
 /* Price and AddItemButton row */
