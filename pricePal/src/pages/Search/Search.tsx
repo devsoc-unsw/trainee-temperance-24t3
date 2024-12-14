@@ -31,7 +31,7 @@ const Search = () => {
   useEffect(() =>  {
     const fetchProducts = async (name: string, category: string[]) => {
       try {
-        const response = await fetch('http://localhost:3000/fetch', {
+        const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
