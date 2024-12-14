@@ -1,6 +1,5 @@
 import React, { MouseEventHandler } from "react";
 import './AddItemButton.css'
-import { Simulate } from "react-dom/test-utils";
 
 interface AddItemButtonProps {
   storeName: string;

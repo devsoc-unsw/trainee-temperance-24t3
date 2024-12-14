@@ -1,27 +1,39 @@
 .header {
   background-color: #B6C5BF;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   padding: 20px 20px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 88.5%;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
 }
 
 .logo {
-  background-color: #ffffff;
   display: flex;
   align-items: center;
-  padding: 10px 10px;
+  padding: 0px 10px;
   border-radius: 10px;
   margin-right: 30px;
-  border-color: #ffffff;
+
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
 }
 
 .search-bar-container {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  color: FFFFFF;
+  color: white;
 }
 
 .search-bar-wrapper {
