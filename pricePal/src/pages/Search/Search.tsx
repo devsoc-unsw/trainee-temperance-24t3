@@ -9,8 +9,6 @@ import CategoryDropDown from "../../components/CategoryDropDown/CategoryDropDown
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  
-  // query stuff here 
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
 
   useEffect(() => {
@@ -81,7 +79,7 @@ const Search = () => {
     }
 
     setSearchQuery(query);
-    fetchProducts(query || '', categories); // Re-fetch products on URL change
+    fetchProducts(query || '', categories); 
   }, [searchParams]);
 
   let data2 = data;
