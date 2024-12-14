@@ -1,6 +1,6 @@
 import React, { MouseEventHandler, useState } from "react";
 import './ShoppingCartCard.css'
-import Heart from '../Heart/Heart.tsx';
+// import Heart from '../Heart/Heart.tsx';
 import AddItemButton from '../AddItemButton/AddItemButton.tsx';
 import { useCart } from '../../CartContext';
 
@@ -46,7 +46,7 @@ const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartCl
         {/* Header: itemName and heart */}
         <div className="shopping-item-header">
           <h1 className="shopping-item-name">{itemName}</h1>
-          <Heart handler={onHeartClick}/>
+          {/* <Heart handler={onHeartClick}/> */}
         </div>
 
         {/* Footer: price and add minus button */}

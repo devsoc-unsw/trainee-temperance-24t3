@@ -1,4 +1,4 @@
-import FavoriteItemCard from "../FavoriteItemCard/FavoriteItemCard";
+// import FavoriteItemCard from "../FavoriteItemCard/FavoriteItemCard";
 import './FavoriteItemList.css'
 interface FavoriteItemListProps {
     headerType: string,
@@ -31,7 +31,7 @@ const FavoriteItemList = ({headerType, shop} : FavoriteItemListProps) => {
                 <text className="shop-header">{shop}</text>
             </div>
             <div className="favorite-list-grid">
-                {filteredStore.map((item, index) => (
+                {/* {filteredStore.map((item, index) => (
                     <FavoriteItemCard 
                     itemImage={item.itemImage}
                     price={item.price} 
@@ -40,7 +40,7 @@ const FavoriteItemList = ({headerType, shop} : FavoriteItemListProps) => {
                         addToCart(index);    
                     }} 
                     onHeartClick={() => {}}/> 
-                ))}
+                ))} */}
             </div>
         </div>
     )
