@@ -7,16 +7,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 // Create an Express app
 const app = express();
-const port = 3000;
+const port = 8080;
 const supabaseUrl = process.env.SUPABASE_URL || '';
-console.log(supabaseUrl);
 const apiKey = process.env.SUPABASE_KEY || '';
-console.log(apiKey);
 const supabase = createClient(supabaseUrl, apiKey)
 
-// Enable CORS for requests from http://localhost:5173
+// Enable CORS for requests from http://localhost:8080
+// add back localhost 5173 for testing
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: ['https://pricepal-beta.vercel.app']
+  // origin: ['http://localhost:5173', 'https://pricepal-beta.vercel.app']
+
 }));
 
 
