@@ -25,19 +25,28 @@ const Search = () => {
 
   const [data, setData] = useState<object[]>([]);
 
-  // Fetch products function
-  const fetchProducts = async (name: string, category: string[]) => {
-    try {
-      const response = await fetch('http://localhost:3000/fetch', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, category }),
-      });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+  useEffect(() =>  {
+    const fetchProducts = async (name: string, category: string[]) => {
+      try {
+        const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, category }),
+        });
+  
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+  
+        const data2 = await response.json();
+        console.log(data2);
+        setData(data2);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      
       }
 
       const data2 = await response.json();
