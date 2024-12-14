@@ -5,8 +5,13 @@ import PersonalInformation from "../../components/PersonalInformation/PersonalIn
 import Header from "../../components/Header/Header";
 import { createClient } from '@supabase/supabase-js'
 // import { Auth } from '@supabase/auth-ui-react';
+// import dotenv from 'dotenv';
+// import express, { Request, Response } from 'express';
 
-const supabase = createClient('https link', 'API KEY')
+// dotenv.config();
+// const app = express();
+// const port = 3000;
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL || '', import.meta.env.VITE_SUPABASE_KEY || '');
 
 async function signOut() {
   const { error } = await supabase.auth.signOut()
