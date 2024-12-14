@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { useSearchParams } from 'react-router-dom';
 import './Search.css';
 // import GreyContainer from "../../components/GreyContainer/GreyContainer";
 import SortDropDown from "../../components/SortDropDown/SortDropDown";
@@ -37,6 +38,18 @@ const Search = () => {
     fetchProducts('Whisky', ['alcoholic']);
   }, [])
 
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState<string | null>(null);
+
+  // const handleSearch = (query: string) => {
+  //   setSearchQuery(query); // Save the search query
+  // };
+
+  useEffect(() => {
+    const query = searchParams.get('query');
+    setSearchQuery(query);
+  }, [searchParams]);
+  
     return(
         <>
             <Header/>
@@ -44,7 +57,7 @@ const Search = () => {
                 {/* <div> search page </div> */}
                 <div className="item-search-box">
                     <div className="item-search-header">
-                        <text className="account-title">Showing search for "bwfgregewg"</text>
+                        <text className="account-title">Showing search for "{searchQuery}"</text>
                     </div>
 
                     <div className="custom-divider"></div>  {/* Styled div for the line */}
