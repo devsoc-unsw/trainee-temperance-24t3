@@ -10,10 +10,10 @@ interface ItemSearchCardProps {
   storeName: string;
   plusOrMinusSign: string;
   onHeartClick: MouseEventHandler;
-  onAddItemClick: MouseEventHandler;
+  // onAddItemClick: MouseEventHandler;
 }
 
-const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign, onHeartClick, onAddItemClick }: ItemSearchCardProps) => {
+const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign, onHeartClick }: ItemSearchCardProps) => {
 
   return(
     <div className="search-item-card">
@@ -37,7 +37,7 @@ const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign
             storeName={storeName} 
             width={48}
             height={27}
-            handler={onAddItemClick}
+            // handler={onAddItemClick}
           />
         </div>
       </div>
