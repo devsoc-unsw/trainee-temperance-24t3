@@ -21,7 +21,7 @@ const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign
   // Handler for adding item to the cart
   const handleAddItem = () => {
     addItemToCart({ itemName, itemImage, price, storeName, quantity: 1 });
-    if (onAddItemClick) onAddItemClick(); 
+    // if (onAddItemClick) onAddItemClick(); 
   };
 
   return(
