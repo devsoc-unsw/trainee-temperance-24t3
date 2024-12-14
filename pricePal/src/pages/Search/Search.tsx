@@ -109,15 +109,17 @@ const Search = () => {
 
                 <div className="custom-divider"></div>  {/* Styled div for the line */}
 
-                <div id ='category-filter'>
-                    <h2>Filter by:</h2>
-                    <CategoryDropDown onFilterChange={handleCategoryFilterChange} />
+                <div className="search-sort-filter">
+                  <div id ='category-filter'>
+                      <h2>Filter by:</h2>
+                      <CategoryDropDown onFilterChange={handleCategoryFilterChange} />
+                  </div>
+
+
+                <div id='search-products-filter-sort'>
+                    <h2 style={{'marginRight': '10px'}}>Sort by:</h2>
+                    <SortDropDown dropDownList={sortBy} currSelected={currSort} setCurrSelected={handleSetCurrSort}/>
                 </div>
-
-
-              <div id='search-products-filter-sort'>
-                  <h2 style={{'marginRight': '10px'}}>Sort by:</h2>
-                  <SortDropDown dropDownList={sortBy} currSelected={currSort} setCurrSelected={handleSetCurrSort}/>
               </div>
 
             <div className="item-search-body">

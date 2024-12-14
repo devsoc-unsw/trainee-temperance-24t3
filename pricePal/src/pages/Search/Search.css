@@ -72,6 +72,24 @@
   margin-top: 5px;
 }
 
+.search-sort-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media (max-width: 651px) {
+  .search-sort-filter {
+    flex-direction: column;
+    justify-content: flex-start;
+
+  }
+
+  #search-products-filter-sort {
+    margin-right: 10px;
+  }
+}
+
 #search-products-filter-sort {
   display: flex;
   justify-content: flex-end;
@@ -85,8 +103,8 @@
   align-items: center; 
   margin-left: 15px;
   margin-right: 10px;
-  position: relative;
-  top: 55px; 
+  /* position: relative;
+  top: 20px;  */
 }
 
 #category-filter h2 {

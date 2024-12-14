@@ -6,11 +6,11 @@ const Favorites = () => {
     return(
         <>
             <Header/>
-            <div className='profile-flex'>
+            <div className='favorite-flex'>
                 {/* <div> Favorites page </div> */}
                 <div className="favorite-item-box">
                     <div className="favorite-header">
-                        <text className="account-title">Favorite Items</text>
+                        <text className="favorite-title">Favorite Items</text>
                     </div>
 
                     <div className="favorite-item-body">

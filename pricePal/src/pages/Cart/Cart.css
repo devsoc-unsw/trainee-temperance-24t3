@@ -16,6 +16,22 @@
     color: black;
 }
 
+.shopping-cart-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.shopping-cart-header {
+    /* background-color: black; */
+    height: 8%;
+    padding: 10px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .shopping-cart-flex{
     display: flex;
     flex-direction: column;
