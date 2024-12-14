@@ -62,12 +62,14 @@ const Search = () => {
 
 
   return(
-    <div className='profile-flex'>
-        <div> search page </div>
-        <div className="item-search-box">
-            <div className="item-search-header">
-                <text className="account-title">Showing search for "{searchQuery}"</text>
-            </div>
+    <>
+      <Header/>
+      <div className='profile-flex'>
+          {/* <div> search page </div> */}
+          <div className="item-search-box">
+              <div className="item-search-header">
+                  <text className="account-title">Showing search for "{searchQuery}"</text>
+              </div>
 
                 <div className="custom-divider"></div>  {/* Styled div for the line */}
 
@@ -76,10 +78,11 @@ const Search = () => {
                     <CategoryDropDown />
                 </div>
 
-            <div id='search-products-filter-sort'>
-                <h2 style={{'marginRight': '10px'}}>Sort by:</h2>
-                <SortDropDown dropDownList={sortBy} currSelected={currSort} setCurrSelected={handleSetCurrSort}/>
-            </div>
+
+              <div id='search-products-filter-sort'>
+                  <h2 style={{'marginRight': '10px'}}>Sort by:</h2>
+                  <SortDropDown dropDownList={sortBy} currSelected={currSort} setCurrSelected={handleSetCurrSort}/>
+              </div>
 
             <div className="item-search-body">
                 <ItemSearchList headerType='coles-header' shop='coles' data={data}></ItemSearchList>
@@ -87,7 +90,8 @@ const Search = () => {
                 <ItemSearchList headerType='woolies-header' shop="woolies" data={data}></ItemSearchList>
             </div>
         </div>
-    </div>
+      </div>
+    </>
   )
 }
 

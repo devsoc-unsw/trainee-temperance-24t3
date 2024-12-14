@@ -38,11 +38,10 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart/>} />
-        <Route path="/landingPage" element={<LandingPage/>} />
         <Route path="/favorites" element={<Favorites/>} />
       </Routes>
     </>

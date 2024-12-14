@@ -6,7 +6,19 @@ interface ItemSearchListProps {
     data: any[]
 }
 
+const items = [
+    { itemImage: "meat.png", price: 4.123, store: "Coles", itemName: "Coles White Bread"},
+    { itemImage: "meat.png", price: 4.26, store: "Woolsworth", itemName: "Item 21" },
+    { itemImage: "meat.png", price: 4.26, store: "Coles", itemName: "Item 32" },
+    { itemImage: "fruits.png", price: 4.26, store: "Coles", itemName: "Item 23" },
+    { itemImage: "meat.png", price: 4.26, store: "Woolsworth", itemName: "Item 34" },
+    { itemImage: "meat.png", price: 4.26, store: "Coles", itemName: "Item 25" },
+    { itemImage: "dairy.png", price: 4.26, store: "Woolsworth", itemName: "Item 36" }
+];
+
 const ItemSearchList = ({headerType, shop, data} : ItemSearchListProps) => {
+    // console.log("list");
+    // console.log(data);
 
     const filteredItems = data.filter(item => item.store === shop);
 

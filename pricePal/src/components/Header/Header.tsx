@@ -41,7 +41,7 @@ const Header = () => {
       <header className="header">
         <div 
             className="logo"
-            onClick={() => navigateTo('/landingPage')}>
+            onClick={() => navigateTo('/')}>
             PricePal
         </div>
         <div className="search-bar-container">

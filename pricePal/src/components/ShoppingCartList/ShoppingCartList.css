@@ -3,7 +3,8 @@
     /* height: clamp(400px, 90%, 525px); */
     /* height: 100%; */
     max-height: 500px;
-    
+    display: flex;
+    flex-direction: column;
 }
 
 .coles-header {
