@@ -39,7 +39,7 @@ const Search = () => {
   // Fetch products function
   const fetchProducts = async (name: string, category: string[]) => {
     try {
-      const response = await fetch('https://pricepal-beta.vercel.app/fetch', {
+      const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Search = () => {
   useEffect(() =>  {
     const fetchProducts = async (name: string, category: string[]) => {
       try {
-        const response = await fetch('https://pricepal-beta.vercel.app/fetch', {
+        const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
