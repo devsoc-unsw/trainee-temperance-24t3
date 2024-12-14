@@ -5,7 +5,7 @@ import './Heart.css';
 // EVERY CARD I PASS THE ID OF THE ITEM TO THE HEART COMPONENT?
 
 interface HeartProps {
-  handler: MouseEventHandler;
+  handler: () => [];
 }
 
 const Heart = ({handler}: HeartProps) => {
