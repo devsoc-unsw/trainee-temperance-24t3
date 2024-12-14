@@ -5,6 +5,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 const CategoryDropDown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [filter, setFilter] = useState("");
+  const [openSubMenu, setOpenSubMenu] = useState<string | null>(null); // Tracks which subcategory menu is open
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleToggleDropdown = () => {
@@ -18,6 +19,7 @@ const CategoryDropDown: React.FC = () => {
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setIsOpen(false);
+      setOpenSubMenu(null); 
     }
   };
 
@@ -28,15 +30,71 @@ const CategoryDropDown: React.FC = () => {
     };
   }, []);
 
-  const category = [
-    'International Food', 'Fruit and Veg', 'Meat, Poultry, Seafood', 'Bakery', 
-    'Deli', 'Dairy, Eggs, Fridge', 'Pantry', 'Alcohol', 'Freezer', 'Drink', 
-    'Pet', 'Baby', 'Health and Beauty', 'Household'
+  // Categories & subcategories
+  const categories = [
+    {
+      name: 'Meat, Poultry, Seafood',
+      subcategories: ['Meat', 'Poultry', 'BBQ', 'Seafood'],
+    },
+    {
+      name: 'Bakery',
+      subcategories: ['In Store Bakery', 'Prepared Bread'],
+    },
+    {
+      name: 'Dairy, Eggs, Fridge',
+      subcategories: [
+        'Cheese',
+        'Milk',
+        'Yoghurt',
+        'Cream, Custard and Desserts',
+        'Butter and Margarine',
+        'Eggs',
+      ],
+    },
+    {
+      name: 'Pantry',
+      subcategories: [
+        'Breakfast and Spreads',
+        'Tea',
+        'Baking',
+        'Herbs and Spices',
+        'Snacks and Confectionery',
+        'Pasta, Rice, Grains and Legumes',
+        'Coffee',
+      ],
+    },
+    {
+      name: 'Freezer',
+      subcategories: ['Frozen Fruit and Veg', 'Frozen Desserts'],
+    },
+    {
+      name: 'Drink',
+      subcategories: [
+        'Sports and Energy Drinks',
+        'Soft Drinks',
+        'Cold Drinks',
+        'Low-Non-Alcoholic Drinks',
+        'Water',
+        'Tea and Juices',
+      ],
+    },
+    {
+      name: 'Baby',
+      subcategories: ['Nappies', 'Baby Food', 'Wipes', 'Bath and Skin Care', 'Bottles and Feeding'],
+    },
+    {
+      name: 'Pet',
+      subcategories: [],
+    },
   ];
 
-  const filteredItems = category.filter(category =>
-    category.toUpperCase().includes(filter)
+  const filteredCategories = categories.filter(category =>
+    category.name.toUpperCase().includes(filter)
   );
+
+  const handleSubMenuToggle = (categoryName: string) => {
+    setOpenSubMenu(openSubMenu === categoryName ? null : categoryName);
+  };
 
   return (
     <div className="dropdown">
@@ -55,8 +113,31 @@ const CategoryDropDown: React.FC = () => {
             value={filter}
             onChange={handleFilterChange}
           />
-          {filteredItems.map((item, index) => (
-            <a key={index} href={`#${item.toLowerCase()}`}>{item}</a>
+          {filteredCategories.map((category, index) => (
+            <div key={index} className="dropdown-item">
+              <div
+                className="main-category"
+                onClick={() => handleSubMenuToggle(category.name)}
+              >
+                {category.name}
+                {category.subcategories.length > 0 && (
+                  <KeyboardArrowDownIcon
+                    className={`arrow-icon ${
+                      openSubMenu === category.name ? 'open' : ''
+                    }`}
+                  />
+                )}
+              </div>
+              {openSubMenu === category.name && category.subcategories.length > 0 && (
+                <div className="sub-dropdown-content">
+                  {category.subcategories.map((sub, subIndex) => (
+                    <a key={subIndex} href={`#${sub.toLowerCase()}`}>
+                      {sub}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       )}
