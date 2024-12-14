@@ -15,6 +15,7 @@ const SortDropDown = ({dropDownList, currSelected, setCurrSelected}: DropDownPro
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleSortDropDown = () => {
+   console.log('clicking dropdown')
     setIsOpen(!isOpen);
   }
 

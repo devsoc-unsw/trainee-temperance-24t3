@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from "react";
 import './ItemSearchCard.css';
-import Heart from '../Heart/Heart.tsx';
+// import Heart from '../Heart/Heart.tsx';
 import AddItemButton from '../AddItemButton/AddItemButton';
 import { useCart } from '../../CartContext';
 
@@ -11,7 +11,7 @@ interface ItemSearchCardProps {
   storeName: string;
   plusOrMinusSign: string;
   onHeartClick: MouseEventHandler;
-  onAddItemClick: MouseEventHandler;
+  onAddItemClick: () => void;
 }
 
 const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign, onHeartClick, onAddItemClick }: ItemSearchCardProps) => {
@@ -21,7 +21,7 @@ const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign
   // Handler for adding item to the cart
   const handleAddItem = () => {
     addItemToCart({ itemName, itemImage, price, storeName, quantity: 1 });
-    if (onAddItemClick) onAddItemClick(); 
+    // if (onAddItemClick) onAddItemClick(); 
   };
 
   return(
@@ -29,7 +29,7 @@ const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign
       {/* Header: itemName and heart */}
       <div className="search-item-header">
         <h1 className="search-item-name">{itemName}</h1>
-        <Heart handler={onHeartClick}/>
+        {/* <Heart handler={onHeartClick}/> */}
       </div>
 
       {/* Item image */}

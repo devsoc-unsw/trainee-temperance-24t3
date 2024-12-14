@@ -22,7 +22,7 @@
   padding: 0px 10px;
   border-radius: 10px;
   margin-right: 30px;
-
+  cursor: pointer;
   font-size: 30px;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
@@ -63,6 +63,10 @@
   display: flex;
   gap: 15px;
   margin-left: 20px;
+}
+
+.icon-buttons button{
+  cursor: pointer;
 }
 
 .icon {

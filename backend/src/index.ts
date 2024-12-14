@@ -9,14 +9,15 @@ dotenv.config();
 const app = express();
 const port = 3000;
 const supabaseUrl = process.env.SUPABASE_URL || '';
-console.log(supabaseUrl);
 const apiKey = process.env.SUPABASE_KEY || '';
-console.log(apiKey);
 const supabase = createClient(supabaseUrl, apiKey)
 
-// Enable CORS for requests from http://localhost:5173
+// Enable CORS for requests from http://localhost:8080
+// add back localhost 5173 for testing
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: ['https://pricepal-beta.vercel.app']
+  // origin: ['http://localhost:5173', 'https://pricepal-beta.vercel.app']
+
 }));
 
 
@@ -56,7 +57,13 @@ async function fetchProducts(name?: string, category?: string[]) {
   return data;
 };
 
+app.get('/', (req: Request, res: Response) => {
+  res.send('Your app finally works!');
+});
+
+
+
 // Start the server
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
   console.log(`Server is running at http://localhost:${port}`);
 });

@@ -1,0 +1,18 @@
+{
+  "name": "scraping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file=.env index.js",
+    "update": "node --env-file=.env index.js && node --env-file=.env updateCategories.js"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.7",
+    "puppeteer": "^23.8.0"
+  }
+}

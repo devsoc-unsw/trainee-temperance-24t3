@@ -8,7 +8,10 @@ import ItemSearchList from '../../components/ItemSearchList/ItemSearchList';
 import CategoryDropDown from "../../components/CategoryDropDown/CategoryDropDown";
 
 const Search = () => {
-  const [searchParams] = useSearchParams();
+  // const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   
   // query stuff here 
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
@@ -19,6 +22,39 @@ const Search = () => {
     setSearchQuery(query);
   }, [searchParams]);
   //after this is just search stufF
+  // Handle category filter changes
+  const handleCategoryFilterChange = (categories: string[]) => {
+    setSelectedCategories(categories);
+  
+    const categoryString = categories.length > 0 ? categories.join(',') : '';
+  
+    setSearchParams({
+      query: searchQuery || '',
+      categories: categoryString
+    });
+  
+    fetchProducts(searchQuery || '', categories);  
+  };
+
+  // Fetch products function
+  const fetchProducts = async (name: string, category: string[]) => {
+    try {
+      const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, category }),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data2 = await response.json();
+      setData(data2);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
   
   const sortBy = ['Lowest unit price', 'Closest match', 'Price (low to high)', 'Price (high to low)'];
   const [currSort, setCurrSort] = useState(sortBy[0]);
@@ -31,7 +67,7 @@ const Search = () => {
   useEffect(() =>  {
     const fetchProducts = async (name: string, category: string[]) => {
       try {
-        const response = await fetch('http://localhost:3000/fetch', {
+        const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -64,7 +100,7 @@ const Search = () => {
   return(
     <>
       <Header/>
-      <div className='profile-flex'>
+      <div className='search-flex'>
           {/* <div> search page </div> */}
           <div className="item-search-box">
               <div className="item-search-header">
@@ -75,7 +111,7 @@ const Search = () => {
 
                 <div id ='category-filter'>
                     <h2>Filter by:</h2>
-                    <CategoryDropDown />
+                    <CategoryDropDown onFilterChange={handleCategoryFilterChange} />
                 </div>
 
 

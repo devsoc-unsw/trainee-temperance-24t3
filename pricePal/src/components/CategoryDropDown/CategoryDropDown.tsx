@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import './CategoryDropDown.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-const CategoryDropDown: React.FC = () => {
+const CategoryDropDown: React.FC<{ onFilterChange: (categories: string[]) => void }> = ({ onFilterChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [filter, setFilter] = useState("");
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -16,7 +17,7 @@ const CategoryDropDown: React.FC = () => {
     const searchTerm = event.target.value.toUpperCase();
     setFilter(searchTerm);
 
-    // Expand first matching category
+    // Expand the first matching category
     const matchingCategory = categories.find(category => {
       return (
         category.name.toUpperCase().includes(searchTerm) ||
@@ -38,6 +39,19 @@ const CategoryDropDown: React.FC = () => {
     }
   };
 
+  const handleCategoryClick = (subcategory: string) => {
+    let newSelectedCategories: string[] = [];
+    
+    if (selectedCategories.includes(subcategory)) {
+      newSelectedCategories = selectedCategories.filter(cat => cat !== subcategory);
+    } else {
+      newSelectedCategories = [...selectedCategories, subcategory];
+    }
+
+    setSelectedCategories(newSelectedCategories);
+    onFilterChange(newSelectedCategories); 
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -48,63 +62,66 @@ const CategoryDropDown: React.FC = () => {
   // Categories with subcategories
   const categories = [
     {
-      name: "Meat, Poultry, Seafood",
-      subcategories: ["Meat", "Poultry", "BBQ", "Seafood"],
+      name: "meat, poultry, seafood",
+      subcategories: ["meat, poultry, seafood", "meat", "poultry", "bbq", "seafood"],
     },
     {
-      name: "Bakery",
-      subcategories: ["In Store Bakery", "Prepared Bread"],
+      name: "bakery",
+      subcategories: ["bakery", "in store bakery", "prepared bread"],
     },
     {
-      name: "Dairy, Eggs, Fridge",
+      name: "dairy, eggs, fridge",
       subcategories: [
-        "Cheese",
-        "Milk",
-        "Yoghurt",
-        "Cream, Custard and Desserts",
-        "Butter and Margarine",
-        "Eggs",
+        "dairy, eggs, fridge",
+        "cheese",
+        "milk",
+        "yoghurt",
+        "cream, custard and desserts",
+        "butter and margarine",
+        "eggs",
       ],
     },
     {
-      name: "Pantry",
+      name: "pantry",
       subcategories: [
-        "Breakfast and Spreads",
-        "Tea",
-        "Baking",
-        "Herbs and Spices",
-        "Snacks and Confectionery",
-        "Pasta, Rice, Grains and Legumes",
-        "Coffee",
+        "pantry",
+        "breakfast and spreads",
+        "tea",
+        "baking",
+        "herbs and spices",
+        "snacks and confectionery",
+        "pasta, rice, grains and legumes",
+        "coffee",
       ],
     },
     {
-      name: "Freezer",
-      subcategories: ["Frozen Fruit and Veg", "Frozen Desserts", "Ready to eat meals"],
+      name: "freezer",
+      subcategories: ["freezer", "frozen fruit and veg", "frozen desserts", "ready to eat meals"],
     },
     {
-      name: "Drink",
+      name: "drink",
       subcategories: [
-        "Sports and Energy Drinks",
-        "Soft Drinks",
-        "Cold Drinks",
-        "Low-Non-Alcoholic Drinks",
-        "Water",
-        "Tea and Juices",
-        "Alcohol",
+        "drink",
+        "sports and energy drinks",
+        "soft drinks",
+        "cold drinks",
+        "low-lon-alcoholic drinks",
+        "water",
+        "tea and juices",
+        "alcohol",
       ],
     },
     {
-      name: "Baby",
-      subcategories: ["Nappies", "Baby Food", "Wipes", "Bottles and Feeding"],
+      name: "baby",
+      subcategories: [ "baby", "nappies", "baby food", "wipes", "bottles and feeding"],
     },
     {
-      name: "Health and Beauty",
-      subcategories: ["Bath and Skin Care"],
+      name: "health and beauty",
+      subcategories: ["health and beauty", "bath and skin care"],
     },
     {
-      name: "Pet",
-      subcategories: [],
+      name: "pet",
+      subcategories: ["pet"],
     },
   ];
 
@@ -130,7 +147,7 @@ const CategoryDropDown: React.FC = () => {
     <div className="dropdown">
       <button onClick={handleToggleDropdown} className="dropbtn">
         <div className="dropbtn-content">
-          <span>All</span>
+          Categories
           <KeyboardArrowDownIcon />
         </div>
       </button>
@@ -163,7 +180,13 @@ const CategoryDropDown: React.FC = () => {
               {expandedCategory === category.name && category.subcategories.length > 0 && (
                 <div className="sub-dropdown-content">
                   {category.subcategories.map((sub, subIndex) => (
-                    <a key={subIndex} href={`#${sub.toLowerCase()}`}>{sub}</a>
+                    <a
+                      key={subIndex}
+                      onClick={() => handleCategoryClick(sub)}
+                      className={selectedCategories.includes(sub) ? "selected" : ""}
+                      href="#!">
+                      {sub}
+                    </a>
                   ))}
                 </div>
               )}
