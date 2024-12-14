@@ -1,35 +1,73 @@
-import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import "./Search.css";
+import React, {useState, useEffect} from "react";
+import { useSearchParams } from 'react-router-dom';
+import './Search.css';
+// import GreyContainer from "../../components/GreyContainer/GreyContainer";
 import SortDropDown from "../../components/SortDropDown/SortDropDown";
 import Header from "../../components/Header/Header";
-import ItemSearchList from "../../components/ItemSearchList/ItemSearchList";
+import ItemSearchList from '../../components/ItemSearchList/ItemSearchList';
 import CategoryDropDown from "../../components/CategoryDropDown/CategoryDropDown";
 
 const Search = () => {
+  // const [searchParams] = useSearchParams();
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  
+  // query stuff here 
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     const query = searchParams.get('query');
+
     setSearchQuery(query);
   }, [searchParams]);
-
-  const sortBy = ['Lowest unit price', 'Closest match', 'Price (low to high)', 'Price (high to low)'];
-  const [currSort, setCurrSort] = useState(sortBy[0]);
-
-  const handleSetCurrSort = (newCurrSort: string) => {
-    setCurrSort(newCurrSort);
+  //after this is just search stufF
+  // Handle category filter changes
+  const handleCategoryFilterChange = (categories: string[]) => {
+    setSelectedCategories(categories);
+  
+    const categoryString = categories.length > 0 ? categories.join(',') : '';
+  
+    setSearchParams({
+      query: searchQuery || '',
+      categories: categoryString
+    });
+  
+    fetchProducts(searchQuery || '', categories);  
   };
 
+  // Fetch products function
+  const fetchProducts = async (name: string, category: string[]) => {
+    try {
+      const response = await fetch('https://pricepal-beta.vercel.app/fetch', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, category }),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data2 = await response.json();
+      setData(data2);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+  
+  const sortBy = ['Lowest unit price', 'Closest match', 'Price (low to high)', 'Price (high to low)'];
+  const [currSort, setCurrSort] = useState(sortBy[0]);
+  const handleSetCurrSort = (newCurrSort: string) => {
+    setCurrSort(newCurrSort);
+  }
+  
   const [data, setData] = useState<object[]>([]);
-
 
   useEffect(() =>  {
     const fetchProducts = async (name: string, category: string[]) => {
       try {
-        const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
+        const response = await fetch('https://pricepal-beta.vercel.app/fetch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -48,48 +86,12 @@ const Search = () => {
         console.error('Error fetching products:', error);
       
       }
-
-      const data2 = await response.json();
-      setData(data2);
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    }
-  };
-
-  useEffect(() => {
+    };
+    
     if (searchQuery != null) {
       fetchProducts(searchQuery, []);
     }
   }, [searchQuery]);
-
-  // Handle category filter changes
-  const handleCategoryFilterChange = (categories: string[]) => {
-    setSelectedCategories(categories);
-  
-    const categoryString = categories.length > 0 ? categories.join(',') : '';
-  
-    setSearchParams({
-      query: searchQuery || '',
-      categories: categoryString
-    });
-  
-    fetchProducts(searchQuery || '', categories);  
-  };
-
-  // Update query and categories from URL
-  useEffect(() => {
-    const query = searchParams.get('query');
-    const categoryParam = searchParams.get('categories');
-    
-    let categories: string[] = [];
-
-    if (categoryParam) {
-      categories = categoryParam.split(',');
-    }
-
-    setSearchQuery(query);
-    fetchProducts(query || '', categories); 
-  }, [searchParams]);
 
   let data2 = data;
   data2.sort((a:any,b: any) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
