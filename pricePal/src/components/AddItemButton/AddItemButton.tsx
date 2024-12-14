@@ -6,7 +6,7 @@ interface AddItemButtonProps {
   plusOrMinusSign: string;
   width: number;
   height: number;
-  handler: MouseEventHandler;
+  // handler: MouseEventHandler;
 }
 
 const getButtonClass = (storeName: string) => {
@@ -19,7 +19,7 @@ const getButtonClass = (storeName: string) => {
   }
 };
 
-const AddItemButton = ({storeName, plusOrMinusSign, width, height, handler}: AddItemButtonProps) => {
+const AddItemButton = ({storeName, plusOrMinusSign, width, height}: AddItemButtonProps) => {
 
   const buttonClass = getButtonClass(storeName);
 
@@ -27,7 +27,7 @@ const AddItemButton = ({storeName, plusOrMinusSign, width, height, handler}: Add
     <>
       <button 
         className={`add-item-button ${buttonClass}`} 
-        onClick={handler}
+        // onClick={handler}
         style={{ width: `${width}px`, height: `${height}px`, fontSize:`${height-7}px`}}
       >
         {plusOrMinusSign}

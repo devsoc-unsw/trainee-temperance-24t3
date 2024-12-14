@@ -7,11 +7,11 @@ interface FavoriteItemCardProps {
   itemName: string;
   itemImage: string;
   price: number;
-  onHeartClick: MouseEventHandler;
-  onAddItemClick: MouseEventHandler;
+  // onHeartClick: MouseEventHandler;
+  // onAddItemClick: MouseEventHandler;
 }
 
-const FavoriteItemCard = ({ itemName, itemImage, price, onHeartClick, onAddItemClick }: FavoriteItemCardProps) => {
+const FavoriteItemCard = ({ itemName, itemImage, price }: FavoriteItemCardProps) => {
 
   const addItemToCart = {
     width: 100,
@@ -27,7 +27,7 @@ const FavoriteItemCard = ({ itemName, itemImage, price, onHeartClick, onAddItemC
         {/* Header: itemName and heart */}
         <div className="favorite-item-header">
           <h1 className="favorite-item-name">{itemName}</h1>
-          <Heart handler={onHeartClick}/>
+          {/* <Heart handler={onHeartClick}/> */}
         </div>
 
         {/* Footer: price and add minus button */}
@@ -38,7 +38,7 @@ const FavoriteItemCard = ({ itemName, itemImage, price, onHeartClick, onAddItemC
               storeName="" 
               width={addItemToCart.width} 
               height={addItemToCart.height} 
-              handler={onAddItemClick}
+              // handler={onAddItemClick}
             />
           </div>
           <h1 className="favorite-item-price">{"$ " + price}</h1>
