@@ -16,10 +16,6 @@ interface ShoppingCartCardProps {
 }
 
 const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartClick }: ShoppingCartCardProps) => {
-  // To decriment and increment each amount of item in the shopping cart.
-  // const [amount, setAmount] = useState(0);
-  // const incrementAmount = () => setAmount(prevAmount => prevAmount + 1);
-  // const decrementAmount = () => setAmount(prevAmount => (prevAmount > 0 ? prevAmount - 1 : 0));
 
   const { cartItems, addItemToCart, removeItemFromCart } = useCart(); // Get the add and remove functions from the CartContext
   const itemInCart = cartItems.find(item => item.itemName === itemName);
@@ -62,11 +58,6 @@ const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartCl
               width={addMinusHeightWidth.width} 
               height={addMinusHeightWidth.height}
               handler={handleMinusItemClick} 
-              // handler={(e) => {
-              //     console.log("decriment");
-              //     onMinusItemClick(e);
-              //   }
-              // }
             />
             <h1 className="amount">{itemInCart ? itemInCart.quantity : 0}</h1>
             <AddItemButton 
@@ -75,11 +66,6 @@ const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartCl
               width={addMinusHeightWidth.width} 
               height={addMinusHeightWidth.height} 
               handler={handleAddItemClick}
-              // handler={(e) => {
-              //     console.log("increment");
-              //     onAddItemClick(e);
-              //   }
-              // }
             />
           </div>
           <h1 className="shopping-item-price">{"$ " + price}</h1>

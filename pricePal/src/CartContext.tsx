@@ -49,12 +49,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           ? { ...cartItem, quantity: cartItem.quantity + 1 }
           : cartItem
       );
-      console.log(cartItems);
-      console.log('add old');
+      // console.log(cartItems);
     } else {
       updatedCart = [...cartItems, { ...item, quantity: 1 }];
-      console.log(cartItems);
-      console.log('add new');
+      // console.log(cartItems);
     }
 
     setCartItems(updatedCart);
@@ -66,12 +64,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       .map((cartItem) => {
         if (cartItem.itemName === item.itemName && cartItem.storeName === item.storeName) {
           if (cartItem.quantity > 1) {
-            console.log(cartItems);
-            console.log('remove old');
+            // console.log(cartItems);
             return { ...cartItem, quantity: cartItem.quantity - 1 };
           } else {
-            console.log(cartItems);
-            console.log('remove new');
+            // console.log(cartItems);
             return null; // Mark for removal
           }
         }

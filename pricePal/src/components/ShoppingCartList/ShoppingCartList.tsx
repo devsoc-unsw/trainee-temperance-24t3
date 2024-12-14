@@ -40,51 +40,7 @@ const ShoppingCartList = ({headerType, matchShop, shop, subtotal, onSubtotalChan
       removeItemFromCart(item);
     }
     };
-    
-    // console.log(amount.length)
-    // if (amount.length === 0) {
-    //     let temp : number[] = [];
-    //     for (const index in items) {
-    //         temp[index] = 0;
-    //     }
 
-    //     setAmount(temp);
-    // }
-    // console.log(amount)
-
-    // const handlePlusAmount = async (index : number) => {
-    //     let amount2 = amount;
-    //     amount2[index]++;
-    //     setAmount([...amount2]);
-    // }
-
-    // const handleMinusAmount = async (index : number) => {
-    //     if (amount[index] !== 0) {
-    //         let amount2 = amount;
-    //         amount2[index]--;
-    //         setAmount([...amount2]);
-    //     }
-    // }
-
-    // Calculate subtotal by summing up all item prices
-    // const subtotal = filteredItems.reduce((total, item) => total + item.price, 0);
-
-    // const handlePlusTotal = async (index : number) => {
-    //     subtotal += filteredItems[index].price;
-    //     onSubtotalChange(subtotal);
-    // }
-
-    // const handleMinusTotal = async (index : number) => {
-    //     if (subtotal !== 0) {
-    //         subtotal -= filteredItems[index].price;
-    //         onSubtotalChange(subtotal);
-    //     }
-    // }
-        
-    // // Notify parent about the subtotal when it changes
-    // useEffect(() => {
-    //     onSubtotalChange(subtotal);
-    // });
 
     return(
         <div className="shopping-cart-list-body">
@@ -100,14 +56,6 @@ const ShoppingCartList = ({headerType, matchShop, shop, subtotal, onSubtotalChan
                         store={item.storeName}
                         amount={amount[index]}
                         itemName={item.itemName} 
-                        // onAddItemClick={() => {
-                        //     handlePlusTotal(index);
-                        //     handlePlusAmount(index);    
-                        // }} 
-                        // onMinusItemClick={() => {
-                        //     handleMinusTotal(index);
-                        //     handleMinusAmount(index);    
-                        // }} 
                         onHeartClick={() => {}} 
                     />
                 ))}
