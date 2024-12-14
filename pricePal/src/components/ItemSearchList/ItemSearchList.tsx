@@ -3,35 +3,33 @@ import './ItemSearchList.css'
 interface ItemSearchListProps {
     headerType: string,
     shop: string,
-    data: object[]
+    data: any[]
 }
 
 const ItemSearchList = ({headerType, shop, data} : ItemSearchListProps) => {
-    // console.log("list");
-    // console.log(data);
+
+    const filteredItems = data.filter(item => item.store === shop);
+
     return(
         <div className="search-list-body">
             <div className={headerType}>
-                <text className="shop-header">{shop}</text>
+                <text className="shop-header">{(shop === 'coles') ? "Coles" : "Woolsworth"}</text>
             </div>
             <div className="search-list-grid">
                 {
-                    data.map((item: any, index) => (
+                    filteredItems.map((item: any, index) => (
                             <ItemSearchCard 
                             storeName= {shop}
                             plusOrMinusSign="+" 
-                            itemImage="meat.png" 
+                            itemImage={item.image || "meat.png" }
                             price={item.price} 
                             itemName={item.name}
                             onHeartClick={() => {}} 
                             onAddItemClick={() => {}}
+                            key={item.id}
                         />
                     ))
                 }
-
-                <ItemSearchCard storeName="woolies" plusOrMinusSign="+" itemImage="meat.png" price={4.1273} itemName="Coles White Bread" onHeartClick={() => {}} onAddItemClick={() => {}}/>
-                <ItemSearchCard storeName="woolies" plusOrMinusSign="+" itemImage="dairy.png" price={4.1273} itemName="Coles White Bread" onHeartClick={() => {}} onAddItemClick={() => {}}/>
-                <ItemSearchCard storeName="woolies" plusOrMinusSign="+" itemImage="fruits.png" price={4.1273} itemName="Coles White Bread" onHeartClick={() => {}} onAddItemClick={() => {}}/>
             </div>
         </div>
     )

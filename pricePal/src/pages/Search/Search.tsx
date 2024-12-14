@@ -7,23 +7,22 @@ import Header from "../../components/Header/Header";
 import ItemSearchList from '../../components/ItemSearchList/ItemSearchList';
 
 const Search = () => {
+  const [searchParams] = useSearchParams();
   
   // query stuff here 
-  const [searchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     const query = searchParams.get('query');
+
     setSearchQuery(query);
   }, [searchParams]);
-  
-  // after this is just search stuff
+  //after this is just search stufF
   
   const sortBy = ['Lowest unit price', 'Closest match', 'Price (low to high)', 'Price (high to low)'];
   const [currSort, setCurrSort] = useState(sortBy[0]);
   const handleSetCurrSort = (newCurrSort: string) => {
     setCurrSort(newCurrSort);
-    console.log(newCurrSort);
   }
   
   const [data, setData] = useState<object[]>([]);
@@ -50,15 +49,17 @@ const Search = () => {
         console.error('Error fetching products:', error);
       
       }
-  
-      // setData(data);
     };
-    fetchProducts(searchQuery, []);
-  }, []);
+    
+    if (searchQuery != null) {
+      fetchProducts(searchQuery, []);
+    }
+  }, [searchQuery]);
+
+  let data2 = data;
+  data2.sort((a:any,b: any) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
 
 
-  // console.log(data);
-  
   return(
     <div className='profile-flex'>
         <div> search page </div>
@@ -75,9 +76,9 @@ const Search = () => {
             </div>
 
             <div className="item-search-body">
-                <ItemSearchList headerType='coles-header' shop='Coles' data={data}></ItemSearchList>
+                <ItemSearchList headerType='coles-header' shop='coles' data={data}></ItemSearchList>
                 {/* <div className="cart-divider"></div> */}
-                <ItemSearchList headerType='woolies-header' shop="Woolsworth" data={data}></ItemSearchList>
+                <ItemSearchList headerType='woolies-header' shop="woolies" data={data}></ItemSearchList>
             </div>
         </div>
     </div>
