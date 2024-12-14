@@ -12,7 +12,7 @@ import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 
 
-const supabase = createClient('https://wfqmymitwnqxlgoasfvr.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndmcW15bWl0d25xeGxnb2FzZnZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM3Mzk5ODEsImV4cCI6MjA0OTMxNTk4MX0.R13p7WtvgaATKDXvEIrchGUp2FqBqRpI01jIv-tO5II')
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL || '', import.meta.env.VITE_SUPABASE_KEY || '');
 
 function App() {
 
