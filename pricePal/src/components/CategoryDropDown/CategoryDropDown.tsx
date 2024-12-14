@@ -121,7 +121,7 @@ const CategoryDropDown: React.FC<{ onFilterChange: (categories: string[]) => voi
     },
     {
       name: "pet",
-      subcategories: ["pet",],
+      subcategories: ["pet"],
     },
   ];
 
@@ -147,7 +147,7 @@ const CategoryDropDown: React.FC<{ onFilterChange: (categories: string[]) => voi
     <div className="dropdown">
       <button onClick={handleToggleDropdown} className="dropbtn">
         <div className="dropbtn-content">
-          <span>All</span>
+          Categories
           <KeyboardArrowDownIcon />
         </div>
       </button>

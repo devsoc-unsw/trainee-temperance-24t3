@@ -6,7 +6,7 @@
   border: none;
   cursor: pointer;
   border-radius: 20px;
-  width: 70px;
+  width: auto;
   background-color: #d9d9d9;
   border-radius: 20px;
   display: flex; 
