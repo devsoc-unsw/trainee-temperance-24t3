@@ -111,7 +111,7 @@ const CategoryDropDown: React.FC = () => {
         subcategory.toUpperCase().includes(filter)
       );
 
-      // logic to include category if name matches the filter or subcategories 
+      // Include category if name matches filter or subcategories 
       if (category.name.toUpperCase().includes(filter) || filteredSubcategories.length > 0) {
         return {
           ...category,
@@ -134,7 +134,7 @@ const CategoryDropDown: React.FC = () => {
         <div id="myDropdown" className="dropdown-content" ref={menuRef}>
           <input
             type="text"
-            placeholder="Search categories or subcategories..."
+            placeholder="Search..."
             id="myInput"
             value={filter}
             onChange={handleFilterChange}
