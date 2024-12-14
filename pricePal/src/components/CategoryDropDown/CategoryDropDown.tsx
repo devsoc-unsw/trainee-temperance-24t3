@@ -63,15 +63,16 @@ const CategoryDropDown: React.FC<{ onFilterChange: (categories: string[]) => voi
   const categories = [
     {
       name: "meat, poultry, seafood",
-      subcategories: ["meat", "poultry", "bbq", "seafood"],
+      subcategories: ["meat, poultry, seafood", "meat", "poultry", "bbq", "seafood"],
     },
     {
       name: "bakery",
-      subcategories: ["in store bakery", "prepared bread"],
+      subcategories: ["bakery", "in store bakery", "prepared bread"],
     },
     {
       name: "dairy, eggs, fridge",
       subcategories: [
+        "dairy, eggs, fridge",
         "cheese",
         "milk",
         "yoghurt",
@@ -83,6 +84,7 @@ const CategoryDropDown: React.FC<{ onFilterChange: (categories: string[]) => voi
     {
       name: "pantry",
       subcategories: [
+        "pantry",
         "breakfast and spreads",
         "tea",
         "baking",
@@ -94,11 +96,12 @@ const CategoryDropDown: React.FC<{ onFilterChange: (categories: string[]) => voi
     },
     {
       name: "freezer",
-      subcategories: ["frozen fruit and veg", "frozen desserts", "ready to eat meals"],
+      subcategories: ["freezer", "frozen fruit and veg", "frozen desserts", "ready to eat meals"],
     },
     {
       name: "drink",
       subcategories: [
+        "drink",
         "sports and energy drinks",
         "soft drinks",
         "cold drinks",
@@ -110,15 +113,15 @@ const CategoryDropDown: React.FC<{ onFilterChange: (categories: string[]) => voi
     },
     {
       name: "baby",
-      subcategories: ["nappies", "baby food", "wipes", "bottles and feeding"],
+      subcategories: [ "baby", "nappies", "baby food", "wipes", "bottles and feeding"],
     },
     {
       name: "health and beauty",
-      subcategories: ["Bath and Skin Care"],
+      subcategories: ["health and beauty", "bath and skin care"],
     },
     {
       name: "pet",
-      subcategories: [],
+      subcategories: ["pet",],
     },
   ];
 
