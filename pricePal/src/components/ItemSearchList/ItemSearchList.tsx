@@ -3,7 +3,7 @@ import './ItemSearchList.css'
 interface ItemSearchListProps {
     headerType: string,
     shop: string,
-    data: object[]
+    data: any[]
 }
 
 const items = [
@@ -20,39 +20,28 @@ const ItemSearchList = ({headerType, shop, data} : ItemSearchListProps) => {
     // console.log("list");
     // console.log(data);
 
-    const filteredStore = items.filter(item => item.store === shop);
+    const filteredItems = data.filter(item => item.store === shop);
 
     return(
         <div className="search-list-body">
             <div className={headerType}>
-                <text className="shop-header">{shop}</text>
+                <text className="shop-header">{(shop === 'coles') ? "Coles" : "Woolsworth"}</text>
             </div>
             <div className="search-list-grid">
                 {
-                    data.map((item: any, index) => (
+                    filteredItems.map((item: any, index) => (
                             <ItemSearchCard 
                             storeName= {shop}
                             plusOrMinusSign="+" 
-                            itemImage="meat.png" 
+                            itemImage={item.image || "meat.png" }
                             price={item.price} 
                             itemName={item.name}
                             onHeartClick={() => {}} 
                             onAddItemClick={() => {}}
+                            key={item.id}
                         />
                     ))
                 }
-
-                {filteredStore.map((item, index) => (
-                    <ItemSearchCard 
-                    storeName={item.store}
-                    price={item.price} 
-                    itemImage={item.itemImage}
-                    itemName={item.itemName}
-                    plusOrMinusSign="+"
-                    onHeartClick={() => {}}
-                    onAddItemClick={() => {}}
-                    />
-                ))}
             </div>
         </div>
     )

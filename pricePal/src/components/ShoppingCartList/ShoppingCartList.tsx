@@ -5,14 +5,15 @@ import { useCart, CartItem } from '../../CartContext';
 
 interface ShoppingCartListProps {
     headerType: string,
+    matchShop: string,
     shop: string,
     subtotal: number,
     onSubtotalChange: (subtotal: number) => void;
 }
 
-const ShoppingCartList = ({headerType, shop, subtotal, onSubtotalChange} : ShoppingCartListProps) => {
+const ShoppingCartList = ({headerType, matchShop, shop, subtotal, onSubtotalChange} : ShoppingCartListProps) => {
       const { cartItems, addItemToCart, removeItemFromCart } = useCart();
-      const filteredItems: CartItem[] = cartItems.filter(item => item.storeName === shop);
+      const filteredItems: CartItem[] = cartItems.filter(item => item.storeName === matchShop);
       
       const [amount, setAmount] = useState<number[]>([]);
 

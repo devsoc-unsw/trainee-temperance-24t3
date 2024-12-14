@@ -21,9 +21,9 @@ const Cart = () => {
                     </div>
 
                     <div className="shopping-cart-body">
-                        <ShoppingCartList headerType='coles-header' shop='Coles' subtotal={colesSubtotal} onSubtotalChange={(subtotal: number) => setColesSubtotal(subtotal)}></ShoppingCartList>
+                        <ShoppingCartList headerType='coles-header' matchShop='coles' shop='Coles' subtotal={colesSubtotal} onSubtotalChange={(subtotal: number) => setColesSubtotal(subtotal)}></ShoppingCartList>
                         {/* <div className="cart-divider"></div> */}
-                        <ShoppingCartList headerType='woolies-header' shop="Woolsworth" subtotal={wooliesSubtotal} onSubtotalChange={(subtotal) => setWooliesSubtotal(subtotal)}></ShoppingCartList>
+                        <ShoppingCartList headerType='woolies-header' matchShop='woolies' shop="Woolsworth" subtotal={wooliesSubtotal} onSubtotalChange={(subtotal) => setWooliesSubtotal(subtotal)}></ShoppingCartList>
                     </div>
                     <div className="shopping-cart-total">Total: ${total.toFixed(2)}</div>
                 </div>
