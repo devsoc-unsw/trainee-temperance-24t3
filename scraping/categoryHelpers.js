@@ -32,6 +32,7 @@ export const customCategories = {
     'fresh-pasta-sauces': 'freash pasta and sauces',
     'fruit-veg': 'fruit and vegetables',
     'fruit-vegetables': 'fruit and vegetables',
+    'frozen': 'freezer',
     'frozen-vegetables': 'frozen fruit and veg',
     'frozen-fruit': 'frozen fruit and veg',
     'ice-cream': 'frozen desserts',
