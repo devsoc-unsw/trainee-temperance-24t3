@@ -3,20 +3,17 @@ import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import PersonalInformation from "../../components/PersonalInformation/PersonalInformation"; 
 import Header from "../../components/Header/Header";
+import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
-// import { Auth } from '@supabase/auth-ui-react';
-// import dotenv from 'dotenv';
-// import express, { Request, Response } from 'express';
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
 
-// dotenv.config();
-// const app = express();
-// const port = 3000;
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL || '', import.meta.env.VITE_SUPABASE_KEY || '');
 
 async function signOut() {
   const { error } = await supabase.auth.signOut()
   if (error) {
-    alert("idk what happened but it errored");
+    alert("Sign out errored");
   }
 }
 
@@ -24,6 +21,25 @@ async function signOut() {
 
 
 const Profile = () => {
+  const [session, setSession] = useState<object | null>(null)
+ 
+    useEffect(() => {
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        setSession(session)
+      })
+
+      const {
+        data: { subscription },
+      } = supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session)
+      })
+
+      return () => subscription.unsubscribe()
+    }, [])
+
+    if (!session) {
+      return (<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />)
+    }
 
   return(
     <>

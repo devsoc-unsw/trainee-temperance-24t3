@@ -68,7 +68,7 @@ const ShoppingCartCard = ({ itemName, itemImage, price, store, amount, onHeartCl
               handler={handleAddItemClick}
             />
           </div>
-          <h1 className="shopping-item-price">{"$ " + price}</h1>
+          <h1 className="shopping-item-price">{"$ " + price.toFixed(2)}</h1>
         </div>
       </div>
     </div>

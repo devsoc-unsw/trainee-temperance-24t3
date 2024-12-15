@@ -71,7 +71,7 @@ const Header = () => {
           </button>
           <button 
             className="icon"
-            onClick={() => navigateTo('/')}>
+            onClick={() => navigateTo('/profile')}>
             <Person2Icon />
           </button>
         </div>

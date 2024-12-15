@@ -34,4 +34,7 @@
     position: absolute;
     top: 15px;
     right: 20px;
+    max-width: 32px;
+    max-height: 32px;
+    cursor: pointer;
 }
