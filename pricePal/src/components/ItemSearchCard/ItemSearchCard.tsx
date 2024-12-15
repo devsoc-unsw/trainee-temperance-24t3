@@ -39,7 +39,7 @@ const ItemSearchCard = ({ itemName, itemImage, price, storeName, plusOrMinusSign
 
       {/* Footer: price and add button */}
       <div className="search-item-footer">
-        <h1 className="search-item-price">{"$ " + price}</h1>
+        <h1 className="search-item-price">{"$ " + price.toFixed(2)}</h1>
         <div className="add-minus-search-item">
           <AddItemButton 
             plusOrMinusSign={plusOrMinusSign} 

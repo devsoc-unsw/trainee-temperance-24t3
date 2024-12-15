@@ -6,9 +6,9 @@ import SortDropDown from "../../components/SortDropDown/SortDropDown";
 import Header from "../../components/Header/Header";
 import ItemSearchList from '../../components/ItemSearchList/ItemSearchList';
 import CategoryDropDown from "../../components/CategoryDropDown/CategoryDropDown";
+import Levenshtein from "levenshtein"
 
 const Search = () => {
-  // const [searchParams] = useSearchParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -26,48 +26,23 @@ const Search = () => {
   const handleCategoryFilterChange = (categories: string[]) => {
     setSelectedCategories(categories);
   
-    const categoryString = categories.length > 0 ? categories.join(',') : '';
+    // const categoryString = categories.length > 0 ? categories.join(',') : '';
   
-    setSearchParams({
-      query: searchQuery || '',
-      categories: categoryString
-    });
+    // setSearchParams({
+    //   query: searchQuery || '',
+    //   categories: categoryString
+    // });
   
-    fetchProducts(searchQuery || '', categories);  
+    // fetchProducts(searchQuery || '', categories);  
   };
-
-  // Fetch products function
-  const fetchProducts = async (name: string, category: string[]) => {
-    try {
-      const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, category }),
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data2 = await response.json();
-      setData(data2);
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    }
-  };
-  
-  const sortBy = ['Lowest unit price', 'Closest match', 'Price (low to high)', 'Price (high to low)'];
-  const [currSort, setCurrSort] = useState(sortBy[0]);
-  const handleSetCurrSort = (newCurrSort: string) => {
-    setCurrSort(newCurrSort);
-  }
   
   const [data, setData] = useState<object[]>([]);
 
   useEffect(() =>  {
     const fetchProducts = async (name: string, category: string[]) => {
       try {
-        const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
+        // const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
+      const response = await fetch('http://localhost:3000/fetch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -89,12 +64,27 @@ const Search = () => {
     };
     
     if (searchQuery != null) {
-      fetchProducts(searchQuery, []);
+      fetchProducts(searchQuery, selectedCategories);
     }
-  }, [searchQuery]);
+  }, [searchQuery, selectedCategories]);
 
-  let data2 = data;
-  data2.sort((a:any,b: any) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
+  const sortBy = ['Price (low to high)', 'Price (high to low)', 'Closest match'];
+  const [currSort, setCurrSort] = useState(sortBy[0]);
+  const handleSetCurrSort = (newCurrSort: string) => {
+    setCurrSort(newCurrSort);
+  }
+
+  if (currSort === sortBy[0]) {
+    data.sort((a:any,b: any) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
+  } else if (currSort === sortBy[1]) {
+    data.sort((a: any,b: any) => (a.price > b.price) ? -1 : ((b.price > a.price) ? 1 : 0))
+  } else if (currSort === sortBy[2]){
+  //   data.sort((a, b) => {
+  //     var leva = new Levenshtein(a,searchQuery).distance;
+  //     var levb = new Levenshtein(b,searchQuery).distance;
+  //     return leva-levb;
+  //    })
+  }
 
 
   return(
