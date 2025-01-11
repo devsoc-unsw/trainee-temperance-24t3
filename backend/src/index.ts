@@ -15,8 +15,8 @@ const supabase = createClient(supabaseUrl, apiKey)
 // Enable CORS for requests from http://localhost:8080
 // add back localhost 5173 for testing
 app.use(cors({
-  origin: ['https://pricepal-beta.vercel.app']
-  // origin: ['http://localhost:5173', 'https://pricepal-beta.vercel.app']
+  // origin: ['https://pricepal-beta.vercel.app']
+  origin: ['http://localhost:5173', 'https://pricepal-beta.vercel.app']
 
 }));
 
