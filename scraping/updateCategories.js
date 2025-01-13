@@ -26,7 +26,6 @@ let wooliesUrl = [
    "https://www.woolworths.com.au/shop/browse/dairy-eggs-fridge/ready-to-eat-meals",
    "https://www.woolworths.com.au/shop/browse/dairy-eggs-fridge/fresh-pasta-sauces",
    "https://www.woolworths.com.au/shop/browse/dairy-eggs-fridge/vegetarian-vegan",
-   "https://www.woolworths.com.au/shop/browse/lunch-box",
    "https://www.woolworths.com.au/shop/browse/pantry/breakfast-spreads",
    "https://www.woolworths.com.au/shop/browse/drinks/coffee",
    "https://www.woolworths.com.au/shop/browse/drinks/tea",
@@ -126,6 +125,12 @@ let colesUrl = [
    "https://www.coles.com.au/browse/baby/bottles-feeding",
 ]
 
+// TODO: 1> CHANGE CODE FOR QUERYING SPECIFIC STORE ITEMS         []
+//       2> CHANGE CODE TO UPDATE PRICE INSTEAD OF CATEGORIES     []
+//       3> INSERT INTO DATABASE IF ITEM NOT REGISTERED YET       []
+//       4> FIGURE OUT PROXY FOR COLES                            []
+//       5> IMPLEMENT HASH TABLE TO KEEP TRACK OF ITEMS           []
+//       6> IMPLEMENT HASH TABLE FOR NEW ITEMS (CATEGORY PURPOSES)[]
 
 async function scrapeWoolies() {
    // Launch the browser and open a new blank page
@@ -153,19 +158,15 @@ async function scrapeWoolies() {
       return [].map.call(anchors, a => a.href);
    });
 
-   const categories = toBrowse.slice(1, 20);
-   categories.splice(5, 1);   // remove lunchbox
-
-   // for (const i in categories) {
-   //    wooliesUrl.push(categories[i]);
-   // }
+   const categories = toBrowse.slice(1, 20); //remove seasonal categories
    wooliesUrl = wooliesUrl.concat(categories);
 
    let nextPage;
 
-   // Credit to Isaac
-   // Modified code from https://github.com/devsoc-unsw/trainee-bard-24t2/blob/main/scraping/src/index.js
    async function getCategoryItem() {
+      // Credit to Isaac
+      // Modified code from https://github.com/devsoc-unsw/trainee-bard-24t2/blob/main/scraping/src/index.js
+   
       await page.waitForSelector('wc-product-tile', {timeout: 180000});
 
       const currUrl = page.url().split("/");
@@ -184,12 +185,17 @@ async function scrapeWoolies() {
          });
 
          for (const i of currentItems) {
-            const target = data.find(obj => obj.id === i.id && obj.store === 'woolies');
-            if (!target) {
+
+            // 1> CHANGE CODE FOR QUERYING SPECIFIC STORE ITEMS
+            const row = await supabase.from('products').select('category').eq('id', i.id).eq('store', 'woolies');
+            if (row.data.length < 1) {
                console.log(i.id);
                continue;
             }
-            const set = new Set(target.category)
+
+            let oldCat = row.data[0].category;
+
+            const set = new Set(oldCat)
 
             let tempCat = currUrl[currUrl.length - 1]
             tempCat = customCategories[tempCat]? customCategories[tempCat]: tempCat
@@ -284,6 +290,7 @@ async function scrapeColes() {
          });
 
          for (const i of currentItems) {
+            // 1> CHANGE CODE FOR QUERYING SPECIFIC STORE ITEMS
             const row = await supabase.from('products').select('category').eq('id', i.id).eq('store', 'coles');
             if (row.data.length < 1) {
                console.log(i.id);
@@ -292,16 +299,10 @@ async function scrapeColes() {
 
             let oldCat = row.data[0].category;
 
-            // const target = data.find(obj => obj.id === i.id && obj.store === 'coles');
-            // if (!target) {
-            //    console.log(i.id);
-            //    continue;
-            // }
+            const set = new Set(oldCat);
 
-            const set = new Set(oldCat)
-
-            let tempCat = currUrl[currUrl.length - 1]
-            tempCat = customCategories[tempCat]? customCategories[tempCat]: tempCat
+            let tempCat = currUrl[currUrl.length - 1];
+            tempCat = customCategories[tempCat]? customCategories[tempCat]: tempCat;
             if (typeof(tempCat) !== 'string') {
                for (const i of tempCat) set.add(i);
             } else {
@@ -333,18 +334,6 @@ async function scrapeColes() {
 
    await browser.close();
 }
+
 await scrapeColes();
-// await scrapeWoolies();
-
-
-// const row = await supabase.from('products').select('category').eq('id', 25).eq('store', 'woolies');
-// const oldCat = row.data[0].category;
-// console.log(oldCat);
-
-// const { error } = await supabase
-//   .from('products')
-//   .update({ category: oldCat })
-//   .eq('id', 25)
-//   .eq("store", 'woolies')
-
-// console.log(error)
+await scrapeWoolies();
