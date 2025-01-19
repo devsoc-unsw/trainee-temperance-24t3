@@ -32,6 +32,13 @@
   font-weight: bold;
   margin: 0;
   flex-grow: 1; /* Ensures item name takes up remaining space */
+  
+  /* make elipsis if text exceeds 3 lines */
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: unset;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 /* Heart button styling */

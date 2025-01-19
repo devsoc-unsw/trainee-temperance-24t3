@@ -28,6 +28,13 @@
 .shopping-item-name {
   font-size: 17px;
   max-height: 50px;
+
+  /* make elipsis if text exceeds 3 lines */
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: unset;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 /* Image styling */

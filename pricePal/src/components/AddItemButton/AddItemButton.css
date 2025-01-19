@@ -1,10 +1,16 @@
 .add-item-button {
-  padding: 3px;
   border: none;
   border-radius: 50px;
   color: white;
-  font-size: 20px;
   align-items: center;
+}
+
+.add-item-button:hover {
+  cursor: pointer;
+}
+
+.add-item-button:active {
+  transform: translateY(1px);
 }
 
 /* Green button for Woolies */
