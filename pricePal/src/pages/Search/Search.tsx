@@ -41,8 +41,8 @@ const Search = () => {
   useEffect(() =>  {
     const fetchProducts = async (name: string, category: string[]) => {
       try {
-        // const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
-      const response = await fetch('http://localhost:3000/fetch', {
+        const response = await fetch('https://backend-winter-sun-8133.fly.dev/fetch', {
+      // const response = await fetch('http://localhost:3000/fetch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -78,14 +78,7 @@ const Search = () => {
     data.sort((a:any,b: any) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
   } else if (currSort === sortBy[1]) {
     data.sort((a: any,b: any) => (a.price > b.price) ? -1 : ((b.price > a.price) ? 1 : 0))
-  } else if (currSort === sortBy[2]){
-  //   data.sort((a, b) => {
-  //     var leva = new Levenshtein(a,searchQuery).distance;
-  //     var levb = new Levenshtein(b,searchQuery).distance;
-  //     return leva-levb;
-  //    })
   }
-
 
   return(
     <>
