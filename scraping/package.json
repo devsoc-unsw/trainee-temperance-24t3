@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file=.env index.js",
-    "update": "node --env-file=.env index.js && node --env-file=.env updateCategories.js"
+    "start": "node --env-file=.env src/index.js",
+    "update": "node --env-file=.env src/wooliesScraper.js"
   },
   "type": "module",
   "author": "",

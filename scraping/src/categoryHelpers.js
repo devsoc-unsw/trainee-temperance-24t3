@@ -1,5 +1,3 @@
-// TODO: - Deal with Coles' categories too
-//       - kms
 export const customCategories = {
     'beer-wine-spirits': 'alcohol',
     'liquor': 'alcohol',
